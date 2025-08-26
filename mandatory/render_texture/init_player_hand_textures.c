@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_player_hand_textures.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/26 16:00:17 by ybounite          #+#    #+#             */
+/*   Updated: 2025/08/26 18:37:26 by ybounite         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/Cub3D.h"
 
 static void	build_filename(char *filename, char *base, int frame_num, char *ext)
@@ -40,8 +52,6 @@ static void	load_frame_texture(t_data_game *_game, int i, char *filename)
 static void	init_player_hand_memory(t_data_game *_game)
 {
 	_game->player_hand = ft_malloc(sizeof(t_player_hand), ALLOC);
-	// if (!_game->player_hand)
-	// 	syntax_error(ALLOC);
 	_game->player_hand->num_frames = 4;
 	_game->player_hand->current_frame = 0;
 	_game->player_hand->img = ft_malloc(sizeof(t_imag *)
