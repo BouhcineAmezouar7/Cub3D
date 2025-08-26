@@ -18,7 +18,7 @@ void	init_textures(t_data_game *_game)
 	_game->texture->so = _game->config->textures[SO_TEXTURE];
 	_game->texture->we = _game->config->textures[WE_TEXTURE];
 	_game->texture->ea = _game->config->textures[EA_TEXTURE];
-	_game->texture->door = "./textures/open-door.xpm";
+	_game->texture->door = "./textures/door1.xpm";
 }
 
 void	init_textures_address(t_texture *texture)
@@ -66,7 +66,7 @@ void	init_textures_data(t_data_game *_game)
 			&texture->we_img->width, &texture->we_img->height);
 	texture->ea_img->img = mlx_xpm_file_to_image(_game->_mlx, texture->ea,
 			&texture->ea_img->width, &texture->ea_img->height);
-	texture->dr_img->img = mlx_xpm_file_to_image(_game->_mlx, "textures/door2.xpm",
+	texture->dr_img->img = mlx_xpm_file_to_image(_game->_mlx, texture->door,
 			&texture->dr_img->width, &texture->dr_img->height);
 	if (!texture->no_img->img || !texture->so_img->img || !texture->dr_img->img
 		|| !texture->we_img->img || !texture->ea_img->img)

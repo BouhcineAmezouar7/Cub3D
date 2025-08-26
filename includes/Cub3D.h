@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 14:57:09 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/26 11:33:58 by bamezoua         ###   ########.fr       */
+/*   Created: 2025/08/26 14:20:54 by ybounite          #+#    #+#             */
+/*   Updated: 2025/08/26 18:01:39 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,15 @@ typedef enum s_texture_type
 	F_COLOR,
 	IDNTIFIER_TEXTURE,
 	TEXTURE_COUNT
-}					t_texture_type;
+}			t_texture_type;
 
-enum				t_keycodes
+enum	t_keycodes
 {
 	W_KEY = 'w',
 	A_KEY = 'a',
 	S_KEY = 's',
 	D_KEY = 'd',
-	E_kEY = 'f',
-	C_KEY = 'c',
+	E_KEY = 'e',
 	ESCAPE = 65307,
 	LEFT_ARROW = 65361,
 	RIGHT_ARROW = 65363
@@ -87,121 +86,123 @@ typedef enum s_spawm_direction
 	SOUTH,
 	EAST,
 	WEST
-}					t_spawm_dir;
+}			t_spawm_dir;
 
 typedef struct s_config
 {
-	char			*textures[TEXTURE_COUNT];
-	int				floor_color;
-	int				ceiling_color;
-}					t_config;
+	char		*textures[TEXTURE_COUNT];
+	int			floor_color;
+	int			ceiling_color;
+}			t_config;
 
 typedef struct s_player
 {
-	double			_x;
-	double			_y;
-	double			angle;
-}					t_player;
+	double		_x;
+	double		_y;
+	double		angle;
+}			t_player;
 
 typedef struct s_point
 {
-	double			x;
-	double			y;
-}					t_point;
+	double		x;
+	double		y;
+}			t_point;
 
 typedef struct s_imag
 {
-	void			*img;
-	char			*addr;
-	int				bit_per_pixel;
-	int				line_len;
-	int				endian;
-	int				width;
-	int				height;
-	int				bpp;
-	int				line_length;
-}					t_imag;
+	void		*img;
+	char		*addr;
+	int			bit_per_pixel;
+	int			line_len;
+	int			endian;
+	int			width;
+	int			height;
+	int			bpp;
+	int			line_length;
+}			t_imag;
 
 typedef struct s_ray
 {
-	double			ray_angle;
-	double			step_angle;
-	double			distance;
-	double			h_distance;
-	double			v_distance;
-	int				was_hit_vertical;
-	double			dist_proj_plane;
-	int				wall_type;
-	t_point			ray_dir;
-	t_point			player;
-	t_point			first_inters_h;
-	t_point			first_inters_v;
-	t_point			step_h;
-	t_point			step_v;
-	t_point			hit;
-	t_point			v_inters;
-	t_point h_inters; // this forst point this
-}					t_ray;
+	double		ray_angle;
+	double		step_angle;
+	double		distance;
+	double		h_distance;
+	double		v_distance;
+	int			was_hit_vertical;
+	double		dist_proj_plane;
+	int			wall_type;
+	t_point		ray_dir;
+	t_point		player;
+	t_point		first_inters_h;
+	t_point		first_inters_v;
+	t_point		step_h;
+	t_point		step_v;
+	t_point		hit;
+	t_point		v_inters;
+	t_point		h_inters; // this forst point this
+}			t_ray;
 
 typedef struct s_texture
 {
-	char			*no;
-	char			*so;
-	char			*we;
-	char			*ea;
-	char			*door;
-	t_imag			*dr_img;
-	t_imag			*no_img;
-	t_imag			*so_img;
-	t_imag			*we_img;
-	t_imag			*ea_img;
-}					t_texture;
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	char		*door;
+	char		*sky;
+	t_imag		*sk_img;
+	t_imag		*dr_img;
+	t_imag		*no_img;
+	t_imag		*so_img;
+	t_imag		*we_img;
+	t_imag		*ea_img;
+}			t_texture;
 
 // animation player hand
 typedef struct s_player_hand
 {
-	t_imag			**img;
-	int				num_frames;
-	int				current_frame;
-	bool			is_shooting;
-}					t_player_hand;
+	t_imag		**img;
+	int			num_frames;
+	int			current_frame;
+	bool		is_shooting;
+}			t_player_hand;
 
 typedef struct s_wall_slice
 {
-	bool			is_door;
-	double			perp_dist;
-	double			wall_height;
-	double			alpha;
-	int				wall_top;
-	short			i;
-	int				wall_bottome;
-	int				tex_x;
-	int				tex_y;
-}					t_data_slice;
+	bool		is_door;
+	double		perp_dist;
+	double		wall_height;
+	double		alpha;
+	int			wall_top;
+	short		i;
+	int			wall_bottome;
+	int			tex_x;
+	int			tex_y;
+}			t_data_slice;
 
 typedef struct s_game
 {
-	bool			is_door;
-	bool			is_door_h;
-	bool			is_door_v;
-	short			fd;
-	short			size;
-	char			**map;
-	char			**map_cpy;
-	void			*_mlx;
-	void			*_win_mlx;
-	char			spawm_dir;
-	int				map_width;
-	int				map_height;
-	t_imag			*_img;
-	t_list			*list;
-	t_list			*map_start;
-	t_config		*config;
-	t_player		*player;
-	t_ray			ray;
-	t_texture		*texture;
+	bool		is_door;
+	bool		is_door_h;
+	bool		is_door_v;
+	short		fd;
+	short		size;
+	char		**map;
+	char		**map_cpy;
+	void		*_mlx;
+	void		*_win_mlx;
+	char		spawm_dir;
+	int			map_width;
+	int			map_height;
+	t_imag		*_img;
+	t_list		*list;
+	t_list		*map_start;
+	t_config	*config;
+	t_player	*player;
+	t_ray		ray;
+	t_texture	*texture;
 	t_player_hand	*player_hand;
-}					t_data_game;
+}			t_data_game;
 
 /* -------------------------------------------------------------------------- */
 /*                             check_file_name.c                              */
@@ -218,132 +219,132 @@ void				syntax_error(short option);
 /* -------------------------------------------------------------------------- */
 
 // parse_maps.c
-void				parse_config(t_data_game *_game);
-char				**parse_map(t_data_game *_game);
-bool				parsing(char *filename, t_data_game *_game);
+void			parse_config(t_data_game *_game);
+char			**parse_map(t_data_game *_game);
+bool			parsing(char *filename, t_data_game *_game);
 
 // file_reading.c
-t_list				*listnew(void *content);
-t_list				*file_reading(short fd);
-void				Print_list(t_list *_list);
+t_list			*listnew(void *content);
+t_list			*file_reading(short fd);
+void			Print_list(t_list *_list);
 
 /* -------------------------------------------------------------------------- */
 /*                             angle_direction.c                              */
 /* -------------------------------------------------------------------------- */
-void				my_mlx_pixel_put(t_imag *_img, int x, int y, int color);
-void				clear_image(t_imag *img, int color);
+void			my_mlx_pixel_put(t_imag *_img, int x, int y, int color);
+void			clear_image(t_imag *img, int color);
 /* -------------------------------------------------------------------------- */
 /*                             render_background.c                            */
 /* -------------------------------------------------------------------------- */
-void				draw_sky_and_floor(t_data_game *_game);
+void			draw_sky_and_floor(t_data_game *_game);
 
 /* -------------------------------------------------------------------------- */
 /*                             angle_direction.c                              */
 /* -------------------------------------------------------------------------- */
-void				normalize_angle(double *angle);
-bool				is_facing_down(double angle);
-bool				is_facing_up(double angle);
-bool				is_facing_right(double angle);
-bool				is_facing_left(double angle);
+void			normalize_angle(double *angle);
+bool			is_facing_down(double angle);
+bool			is_facing_up(double angle);
+bool			is_facing_right(double angle);
+bool			is_facing_left(double angle);
 
 /* -------------------------------------------------------------------------- */
 /*                            horizontal_intersection.c                       */
 /* -------------------------------------------------------------------------- */
-bool				cast_horizontal(t_data_game *g, t_ray *ray, t_point *hit,
-						double *dist);
+bool			cast_horizontal(t_data_game *g, t_ray *ray, t_point *hit,
+					double *dist);
 
 /* -------------------------------------------------------------------------- */
 /*                            vertical_intersection.c                         */
 /* -------------------------------------------------------------------------- */
-bool				cast_vertical(t_data_game *g, t_ray *ray, t_point *hit,
-						double *dist);
+bool			cast_vertical(t_data_game *g, t_ray *ray, t_point *hit,
+					double *dist);
 
 /* -------------------------------------------------------------------------- */
 /*                          collision_check.c 						      */
 /* -------------------------------------------------------------------------- */
-bool				_hase_wall(t_data_game *_game, double dx, double dy);
-bool				is_wall(t_data_game *_game, double x, double y);
+bool			_hase_wall(t_data_game *_game, double dx, double dy);
+bool			is_wall(t_data_game *_game, double x, double y);
 
 /* -------------------------------------------------------------------------- */
 /*                          player_control.c 						*/
 /* -------------------------------------------------------------------------- */
-int					control_key_(int keycode, t_data_game *_game);
-void				_player_move(int key, t_data_game *_game);
+int			control_key_(int keycode, t_data_game *_game);
+void			_player_move(int key, t_data_game *_game);
 
 /* -------------------------------------------------------------------------- */
 /*                          ray_casting.c 						*/
 /* -------------------------------------------------------------------------- */
-void				_cast_all_rays(t_data_game *g);
-void				cast_ray(t_data_game *g, t_ray *ray);
+void			_cast_all_rays(t_data_game *g);
+void			cast_ray(t_data_game *g, t_ray *ray);
 
 /* -------------------------------------------------------------------------- */
 /*                           init player 						*/
 /* -------------------------------------------------------------------------- */
-void				player_position(t_data_game *_game);
-void				init_player_direction(t_data_game *_game, char spawn_dir);
-void				player_init(t_data_game *_game);
+void			player_position(t_data_game *_game);
+void			init_player_direction(t_data_game *_game, char spawn_dir);
+void			player_init(t_data_game *_game);
 
 /* -------------------------------------------------------------------------- */
 /*                              check_allowed_characters.c				*/
 /* -------------------------------------------------------------------------- */
-bool				check_allowed_characters(t_data_game *_game);
-bool				isplayer_position(char c);
+bool			check_allowed_characters(t_data_game *_game);
+bool			isplayer_position(char c);
 
-bool				parse_texture_line(t_data_game *_game, char *line);
+bool			parse_texture_line(t_data_game *_game, char *line);
 t_texture_type		get_texturs_type(char *line);
 
 /* -------------------------------------------------------------------------- */
 /*                             control keypriss                               */
 /* -------------------------------------------------------------------------- */
-int					_destory_window(t_data_game *_game);
-int					control_key_(int keycode, t_data_game *_game);
-void				render_map(t_data_game *_game);
+int			_destory_window(t_data_game *_game);
+int			control_key_(int keycode, t_data_game *_game);
+void			render_map(t_data_game *_game);
 
 /* -------------------------------------------------------------------------- */
 /*                             check_filename                                 */
 /* -------------------------------------------------------------------------- */
-void				validate_textures(t_config *_config);
+void			validate_textures(t_config *_config);
 
 /* -------------------------------------------------------------------------- */
-/*                             _mlx_init  			                        */
+/*                             _mlx_init  			              */
 /* -------------------------------------------------------------------------- */
-bool				_mlx_init_data(t_data_game *_game);
-void				start_simulation(t_data_game *_game);
+bool			_mlx_init_data(t_data_game *_game);
+void			start_simulation(t_data_game *_game);
 
 /* -------------------------------------------------------------------------- */
 /*                             map_renderer.c                                 */
 /* -------------------------------------------------------------------------- */
-void				draw_map(t_data_game *_game);
-void				my_mlx_pixel_put(t_imag *_img, int x, int y, int color);
+void			draw_map(t_data_game *_game);
+void			my_mlx_pixel_put(t_imag *_img, int x, int y, int color);
 
-void				validate_colors(t_config *_config, t_data_game *_game);
-void				map_is_closed(char **map, short size);
-bool				is_valid_map(t_data_game *_game);
+void			validate_colors(t_config *_config, t_data_game *_game);
+void			map_is_closed(char **map, short size);
+bool			is_valid_map(t_data_game *_game);
 
-void				raycasting(t_data_game *_game);
-void				draw_line(t_data_game *_game, t_point start_p,
-						t_point end_p, int color);
-bool				is_wall(t_data_game *_game, double x, double y);
+void			raycasting(t_data_game *_game);
+void			draw_line(t_data_game *_game, t_point start_p,
+					t_point end_p, int color);
+bool			is_wall(t_data_game *_game, double x, double y);
 
 /* -------------------------------------------------------------------------- */
 /*                             casr_all_rays.c                                */
 /* -------------------------------------------------------------------------- */
-void				cast_all_rays(t_data_game *_game);
-void				init_textures(t_data_game *_game);
+void			cast_all_rays(t_data_game *_game);
+void			init_textures(t_data_game *_game);
 
-void				validate_textures_and_colors(t_config *_config,
+void			validate_textures_and_colors(t_config *_config,
 						t_data_game *_game);
-void				draw_minimap(t_data_game *_game);
-void				init_textures_data(t_data_game *_game);
+void			draw_minimap(t_data_game *_game);
+void			init_textures_data(t_data_game *_game);
 
-void				_draw_line(t_data_game *g, t_point start, t_point end,
-						int color);
+void			_draw_line(t_data_game *g, t_point start, t_point end,
+				int color);
 
-void				init_player_hand_textures(t_data_game *_game);
-void				update_player_hand_animation(t_data_game *_game);
-void				render_player_hand(t_data_game *_game);
-void				trigger_shooting_animation(t_data_game *_game);
+void			init_player_hand_textures(t_data_game *_game);
+void			update_player_hand_animation(t_data_game *_game);
+void			render_player_hand(t_data_game *_game);
+void			trigger_shooting_animation(t_data_game *_game);
 unsigned int		get_pixel(t_imag *tex, int x, int y);
-int					control_gun_key(int button, int x, int y,
-						t_data_game *_game);
+int			control_gun_key(int button, int x, int y,
+				t_data_game *_game);
 #endif
