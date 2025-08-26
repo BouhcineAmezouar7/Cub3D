@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:18:42 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/25 13:19:59 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/26 18:13:31 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../includes/Cub3D.h"
@@ -19,6 +19,7 @@ void	init_textures(t_data_game *_game)
 	_game->texture->we = _game->config->textures[WE_TEXTURE];
 	_game->texture->ea = _game->config->textures[EA_TEXTURE];
 	_game->texture->door = "./textures/door1.xpm";
+	_game->texture->sky = "./textures/sky.xpm";
 }
 
 void	init_textures_address(t_texture *texture)
@@ -38,7 +39,9 @@ void	init_textures_address(t_texture *texture)
 	texture->dr_img->addr = mlx_get_data_addr(texture->dr_img->img,
 			&texture->dr_img->bit_per_pixel,
 			&texture->dr_img->line_len, &texture->dr_img->endian);
-
+	texture->sk_img->addr = mlx_get_data_addr(texture->sk_img->img,
+			&texture->sk_img->bit_per_pixel,
+			&texture->sk_img->line_len, &texture->sk_img->endian);
 	if (!texture->no_img->addr || !texture->so_img->addr || !texture->dr_img->addr
 		|| !texture->we_img->addr || !texture->ea_img->addr)
 	{
@@ -57,6 +60,7 @@ void	init_textures_data(t_data_game *_game)
 	_game->texture->we_img = ft_malloc(sizeof(t_imag), ALLOC);
 	_game->texture->ea_img = ft_malloc(sizeof(t_imag), ALLOC);
 	_game->texture->dr_img = ft_malloc(sizeof(t_imag), ALLOC);
+	_game->texture->sk_img = ft_malloc(sizeof(t_imag), ALLOC);
 	texture = _game->texture;
 	texture->no_img->img = mlx_xpm_file_to_image(_game->_mlx, texture->no,
 			&texture->no_img->width, &texture->no_img->height);
@@ -68,6 +72,8 @@ void	init_textures_data(t_data_game *_game)
 			&texture->ea_img->width, &texture->ea_img->height);
 	texture->dr_img->img = mlx_xpm_file_to_image(_game->_mlx, texture->door,
 			&texture->dr_img->width, &texture->dr_img->height);
+	texture->sk_img->img = mlx_xpm_file_to_image(_game->_mlx, texture->sky,
+			&texture->sk_img->width, &texture->sk_img->height);
 	if (!texture->no_img->img || !texture->so_img->img || !texture->dr_img->img
 		|| !texture->we_img->img || !texture->ea_img->img)
 	{
