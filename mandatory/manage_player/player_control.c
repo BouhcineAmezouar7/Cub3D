@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_control.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/22 16:01:09 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/26 13:11:44 by bamezoua         ###   ########.fr       */
+/*   Created: 2025/08/26 15:03:03 by ybounite          #+#    #+#             */
+/*   Updated: 2025/08/26 16:20:36 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ bool	wall_collisions(t_data_game *_game, t_point old_player)
 		_game->player->_y = old_player.y;
 	return (true);
 }
+
 bool	is_door(t_data_game *_game, double px, double py)
 {
 	px /= TILE_SIZE;
@@ -53,26 +54,25 @@ bool	is_door(t_data_game *_game, double px, double py)
 		return true;
 	return false;
 }
-void	open_door(t_data_game *_g)
-{
-	printf("open door \n");
-	double check_x = _g->player->_x + cos(_g->player->angle) * (TILE_SIZE / 2.0);
-	double check_y = _g->player->_y + sin(_g->player->angle) * (TILE_SIZE / 2.0);
 
-	int door_x = (int)(check_x / TILE_SIZE);
-	int door_y = (int)(check_y / TILE_SIZE);
+void	open_door(t_data_game *_g, t_point check_)
+{
+	check_.x = check_.x + cos(_g->player->angle) * (TILE_SIZE / 2.0);
+	check_.y =  check_.y + sin(_g->player->angle) * (TILE_SIZE / 2.0);
+
+	int door_x = (int)(check_.x / TILE_SIZE);
+	int door_y = (int)(check_.y / TILE_SIZE);
 
 	if (door_x < 0 || door_y < 0 ||
 		door_x >= _g->map_width || door_y >= _g->map_height)
 		return;
-
 	char *cell = &_g->map[door_y][door_x];
 
 	if (*cell == 'D')
-		*cell = 'O'; // Open door
+		*cell = 'O';
 	else if (*cell == 'O' && !is_door(_g, _g->player->_x, _g->player->_y))
-		*cell = 'D'; // Close door
-}	
+		*cell = 'D';
+}
 
 int	control_key_(int keycode, t_data_game *_g)
 {
@@ -100,7 +100,7 @@ int	control_key_(int keycode, t_data_game *_g)
 			_g->player->angle -= 2 * PI;
 	}
 	if (keycode == E_KEY)
-		open_door(_g);
+		open_door(_g, (t_point){_g->player->_x, _g->player->_y});
 	return (true);
 }
 
