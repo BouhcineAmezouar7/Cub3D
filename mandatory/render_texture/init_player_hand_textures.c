@@ -39,30 +39,25 @@ static void	load_frame_texture(t_data_game *_game, int i, char *filename)
 
 static void	init_player_hand_memory(t_data_game *_game)
 {
-	_game->player_hand = malloc(sizeof(t_player_hand));
-	if (!_game->player_hand)
-		syntax_error(ALLOC);
+	_game->player_hand = ft_malloc(sizeof(t_player_hand), ALLOC);
+	// if (!_game->player_hand)
+	// 	syntax_error(ALLOC);
 	_game->player_hand->num_frames = 4;
 	_game->player_hand->current_frame = 0;
-	_game->player_hand->img = malloc(sizeof(t_imag *)
-			* _game->player_hand->num_frames);
-	if (!_game->player_hand->img)
-		syntax_error(ALLOC);
+	_game->player_hand->img = ft_malloc(sizeof(t_imag *)
+			* _game->player_hand->num_frames, ALLOC);
 }
 
 void	init_player_hand_textures(t_data_game *_game)
 {
 	int i;
-	char *filename;
+	char filename[256];
 
-	filename = malloc(50 * sizeof(char));
 	init_player_hand_memory(_game);
 	i = 0;
 	while (i < _game->player_hand->num_frames)
 	{
-		_game->player_hand->img[i] = malloc(sizeof(t_imag));
-		if (!_game->player_hand->img[i])
-			syntax_error(ALLOC);
+		_game->player_hand->img[i] = ft_malloc(sizeof(t_imag), ALLOC);
 		build_filename(filename, "./textures/shotgun/anim_", i, ".xpm");
 		load_frame_texture(_game, i, filename);
 		i++;

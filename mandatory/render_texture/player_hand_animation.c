@@ -4,7 +4,7 @@ void	update_player_hand_animation(t_data_game *_game)
 {
 	static int	frame_counter = 0;
 
-	static int animation_speed = 10; // speed (lower = faster)
+	static int animation_speed = 5; // speed (lower = faster)
 	frame_counter++;
 	if (frame_counter >= animation_speed)
 	{
