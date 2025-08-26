@@ -45,6 +45,8 @@ SRC	= $(SRC_DIR)/main.c \
 	  $(RAYCASTING_DIR)/horizontal_intersection.c \
 	  $(RAYCASTING_DIR)/render_background.c \
 	  $(RAYCASTING_DIR)/ray_casting.c \
+	  $(RENDER_TEXTURE_DIR)/player_hand_animation.c \
+	  $(RENDER_TEXTURE_DIR)/init_player_hand_textures.c \
 	  $(RENDER_TEXTURE_DIR)/init_textures.c \
 
 SRC += $(SRC_GETLINE)

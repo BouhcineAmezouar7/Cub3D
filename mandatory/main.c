@@ -6,7 +6,7 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:45:16 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/19 10:00:41 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/26 11:32:30 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,7 @@ void	sdraw_line(t_data_game *_game)
 	{
 		if (is_wall(_game, inters.x, inters.y))
 			break ;
-		my_mlx_pixel_put(_game->_img, (int)inters.x, (int)inters.y
-		   , 0x000000);
+		my_mlx_pixel_put(_game->_img, (int)inters.x, (int)inters.y, 0x000000);
 		inters.x += step.x;
 		inters.y += step.y;
 		i++;
@@ -72,18 +71,25 @@ int	render(t_data_game *g)
 		draw_sky_and_floor(g);
 		// draw_map(g);
 		_cast_all_rays(g);
-		//sdraw_line(g);
-	        //cast_ray(g, &ray);
+		// sdraw_line(g);
+		// cast_ray(g, &ray);
 		//_draw_line(g, g->ray.player, g->ray.hit, 0xFFFFFF);
 		draw_minimap(g);
+		if (g->player_hand->is_shooting)
+		{
+			if (g->player_hand->current_frame == g->player_hand->num_frames - 1)
+				g->player_hand->is_shooting = false;
+			update_player_hand_animation(g);
+		}
 		mlx_put_image_to_window(g->_mlx, g->_win_mlx, g->_img->img, 0, 0);
+		render_player_hand(g);
 		frame = 0;
 	}
 	frame++;
 	return (0);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_data_game	*_game;
 
@@ -99,14 +105,15 @@ int main(int ac, char **av)
 		return (ft_putendl_fd("Error:\nmlx_init failed.", STDERR), false);
 	if (!parsing(av[1], _game))
 		return (ft_malloc(CLEAR, CLEAR), EXIT_FAILURE);
-	player_init(_game);
 	init_textures(_game);
+	init_player_hand_textures(_game);
+	player_init(_game);
 	init_textures_data(_game);
 	printf("poist p_x : %f\n", _game->player->_x);
 	printf("poist p_y : %f\n", _game->player->_y);
-	
 	_mlx_init_data(_game);
 	mlx_hook(_game->_win_mlx, KeyPress, KeyPressMask, control_key_, _game);
+	mlx_mouse_hook(_game->_win_mlx, control_gun_key, _game);
 	mlx_loop_hook(_game->_mlx, render, _game);
 	mlx_loop(_game->_mlx);
 	// _mlx_init_data(_game);

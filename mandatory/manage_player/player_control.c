@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_control.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 16:01:09 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/22 16:13:56 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/26 11:33:52 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,15 @@ int	control_key_(int keycode, t_data_game *_g)
 			_g->player->angle -= 2 * PI;
 	}
 	return (true);
+}
+
+int	control_gun_key(int button, int x, int y, t_data_game *_game)
+{
+	(void)x;
+	(void)y;
+	if (button == 1) // Left mouse button
+	{
+		trigger_shooting_animation(_game);
+	}
+	return (0);
 }
