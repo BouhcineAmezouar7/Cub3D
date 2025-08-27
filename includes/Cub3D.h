@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:20:54 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/26 18:01:39 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/27 12:56:59 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,17 @@
 
 typedef enum s_texture_type
 {
-	NO_TEXTURE, // North
-	SO_TEXTURE, // South
-	WE_TEXTURE, // West
-	EA_TEXTURE, // East
+	NO_TEXTURE,
+	SO_TEXTURE,
+	WE_TEXTURE,
+	EA_TEXTURE,
 	C_COLOR,
 	F_COLOR,
 	IDNTIFIER_TEXTURE,
 	TEXTURE_COUNT
 }			t_texture_type;
 
-enum	t_keycodes
+typedef enum s_keycodes
 {
 	W_KEY = 'w',
 	A_KEY = 'a',
@@ -78,7 +78,7 @@ enum	t_keycodes
 	ESCAPE = 65307,
 	LEFT_ARROW = 65361,
 	RIGHT_ARROW = 65363
-};
+}		t_keycodes;
 
 typedef enum s_spawm_direction
 {
@@ -185,6 +185,8 @@ typedef struct s_game
 	bool		is_door;
 	bool		is_door_h;
 	bool		is_door_v;
+	bool		h_found;
+	bool		v_found;
 	short		fd;
 	short		size;
 	char		**map;
@@ -207,22 +209,24 @@ typedef struct s_game
 /* -------------------------------------------------------------------------- */
 /*                             check_file_name.c                              */
 /* -------------------------------------------------------------------------- */
-bool				check_filename(char *file_name, char *str);
-void				check_file_name(char *file_name);
+bool			check_filename(char *file_name, char *str);
+void			check_file_name(char *file_name);
 
 /* -------------------------------------------------------------------------- */
 /*                             syntax_error.c                                 */
 /* -------------------------------------------------------------------------- */
-void				syntax_error(short option);
+void			syntax_error(short option);
+
 /* -------------------------------------------------------------------------- */
 /*                             parse_maps.c                                   */
 /* -------------------------------------------------------------------------- */
-
-// parse_maps.c
 void			parse_config(t_data_game *_game);
 char			**parse_map(t_data_game *_game);
 bool			parsing(char *filename, t_data_game *_game);
 
+/* -------------------------------------------------------------------------- */
+/*                             parse_maps.c                                   */
+/* -------------------------------------------------------------------------- */
 // file_reading.c
 t_list			*listnew(void *content);
 t_list			*file_reading(short fd);
@@ -252,52 +256,73 @@ bool			is_facing_left(double angle);
 /* -------------------------------------------------------------------------- */
 bool			cast_horizontal(t_data_game *g, t_ray *ray, t_point *hit,
 					double *dist);
+bool			is_within_map_bounds(t_data_game *_game, t_point next);
+t_point			get_horizontal_ray_step(t_ray *ray);
+t_point			get_first_horizontal_intercept(t_ray *ray);
 
 /* -------------------------------------------------------------------------- */
 /*                            vertical_intersection.c                         */
 /* -------------------------------------------------------------------------- */
 bool			cast_vertical(t_data_game *g, t_ray *ray, t_point *hit,
-					double *dist);
+					double *dist);	
+t_point			get_vertical_ray_step(t_ray *ray);
+t_point			get_first_vertical_intercept(t_ray *ray);
 
 /* -------------------------------------------------------------------------- */
-/*                          collision_check.c 						      */
+/*                          collision_check.c 				      */
 /* -------------------------------------------------------------------------- */
 bool			_hase_wall(t_data_game *_game, double dx, double dy);
 bool			is_wall(t_data_game *_game, double x, double y);
 
 /* -------------------------------------------------------------------------- */
-/*                          player_control.c 						*/
+/*                          wall_renderer.c 				      */
 /* -------------------------------------------------------------------------- */
-int			control_key_(int keycode, t_data_game *_game);
+void			_render_wall_slice(t_data_game *g, t_ray *ray, int i);
+int				get_tex_x(t_ray *ray, t_imag *textuer);
+void			draw_wall_strip(t_data_game *_g, t_ray *ray, t_imag *tex,
+					t_data_slice sd);
+
+/* -------------------------------------------------------------------------- */
+/*                          ptexture_management.c			      */
+/* -------------------------------------------------------------------------- */
+unsigned int	get_pixel(t_imag *tex, int x, int y);
+t_imag			*choose_texture(t_data_game *g, t_ray *ray);
+unsigned int	blend_color(unsigned int src, unsigned int bg,
+					double alpha);
+
+/* -------------------------------------------------------------------------- */
+/*                          player_control.c 		    		      */
+/* -------------------------------------------------------------------------- */
+int				control_key_(int keycode, t_data_game *_game);
 void			_player_move(int key, t_data_game *_game);
 
 /* -------------------------------------------------------------------------- */
-/*                          ray_casting.c 						*/
+/*                          ray_casting.c 				      */
 /* -------------------------------------------------------------------------- */
 void			_cast_all_rays(t_data_game *g);
 void			cast_ray(t_data_game *g, t_ray *ray);
 
 /* -------------------------------------------------------------------------- */
-/*                           init player 						*/
+/*                           init player 			  	      */
 /* -------------------------------------------------------------------------- */
 void			player_position(t_data_game *_game);
 void			init_player_direction(t_data_game *_game, char spawn_dir);
 void			player_init(t_data_game *_game);
 
 /* -------------------------------------------------------------------------- */
-/*                              check_allowed_characters.c				*/
+/*                              check_allowed_characters.c	  	      */
 /* -------------------------------------------------------------------------- */
 bool			check_allowed_characters(t_data_game *_game);
 bool			isplayer_position(char c);
 
 bool			parse_texture_line(t_data_game *_game, char *line);
-t_texture_type		get_texturs_type(char *line);
+t_texture_type	get_texturs_type(char *line);
 
 /* -------------------------------------------------------------------------- */
 /*                             control keypriss                               */
 /* -------------------------------------------------------------------------- */
-int			_destory_window(t_data_game *_game);
-int			control_key_(int keycode, t_data_game *_game);
+int				_destory_window(t_data_game *_game);
+int				control_key_(int keycode, t_data_game *_game);
 void			render_map(t_data_game *_game);
 
 /* -------------------------------------------------------------------------- */
@@ -333,18 +358,18 @@ void			cast_all_rays(t_data_game *_game);
 void			init_textures(t_data_game *_game);
 
 void			validate_textures_and_colors(t_config *_config,
-						t_data_game *_game);
+					t_data_game *_game);
 void			draw_minimap(t_data_game *_game);
 void			init_textures_data(t_data_game *_game);
 
 void			_draw_line(t_data_game *g, t_point start, t_point end,
-				int color);
+					int color);
 
 void			init_player_hand_textures(t_data_game *_game);
 void			update_player_hand_animation(t_data_game *_game);
 void			render_player_hand(t_data_game *_game);
 void			trigger_shooting_animation(t_data_game *_game);
-unsigned int		get_pixel(t_imag *tex, int x, int y);
-int			control_gun_key(int button, int x, int y,
-				t_data_game *_game);
+unsigned	int		get_pixel(t_imag *tex, int x, int y);
+int				control_gun_key(int button, int x, int y,
+					t_data_game *_game);
 #endif
