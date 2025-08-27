@@ -6,12 +6,80 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 15:45:16 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/26 13:14:10 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/27 13:41:22 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Cub3D.h"
 
+int	render(t_data_game *g)
+{
+	static short	frame;
+
+	if (frame == 100)
+	{
+		clear_image(g->_img, BLACK);
+		draw_sky_and_floor(g);
+		_cast_all_rays(g);
+		draw_minimap(g);
+		if (g->player_hand->is_shooting)
+		{
+			if (g->player_hand->current_frame == g->player_hand->num_frames - 1)
+				g->player_hand->is_shooting = false;
+			update_player_hand_animation(g);
+		}
+		mlx_put_image_to_window(g->_mlx, g->_win_mlx, g->_img->img, 0, 0);
+		render_player_hand(g);
+		frame = 0;
+	}
+	frame++;
+	return (0);
+}
+
+t_data_game	*initialize_game(void)
+{
+	t_data_game	*_game;
+
+	_game = ft_malloc(sizeof(t_data_game), ALLOC);
+	_game->config = ft_malloc(sizeof(t_config), ALLOC);
+	_game->player = ft_malloc(sizeof(t_player), ALLOC);
+	ft_bzero(_game->config->textures, sizeof(char *) * TEXTURE_COUNT);
+	_game->_img = ft_malloc(sizeof(t_imag), ALLOC);
+	return (_game);
+}
+
+void	start_simulation(t_data_game *_game)
+{
+	init_textures(_game);
+	init_player_hand_textures(_game);
+	player_init(_game);
+	init_textures_data(_game);
+	printf("poist p_x : %f\n", _game->player->_x);
+	printf("poist p_y : %f\n", _game->player->_y);
+	_mlx_init_data(_game);
+	mlx_hook(_game->_win_mlx, KeyPress, KeyPressMask, control_key_, _game);
+	mlx_mouse_hook(_game->_win_mlx, control_gun_key, _game);
+	mlx_loop_hook(_game->_mlx, render, _game);
+	mlx_loop(_game->_mlx);
+}
+
+int	main(int ac, char **av)
+{
+	t_data_game	*_game;
+
+	if (ac != 2)
+		return (syntax_error(true), EXIT_FAILURE);
+	_game = initialize_game();
+	_game->_mlx = mlx_init();
+	if (!_game->_mlx)
+		return (ft_putendl_fd("Error:\nmlx_init failed.", STDERR), false);
+	if (!parsing(av[1], _game))
+		return (ft_malloc(CLEAR, CLEAR), EXIT_FAILURE);
+	start_simulation(_game);
+	ft_malloc(CLEAR, CLEAR);
+	return (EXIT_SUCCESS);
+}
+/* 
 void	_draw_line(t_data_game *g, t_point start, t_point end, int color)
 {
 	double	dx;
@@ -60,7 +128,6 @@ void	sdraw_line(t_data_game *_game)
 		i++;
 	}
 }
-
 int	render(t_data_game *g)
 {
 	static short	frame;
@@ -88,37 +155,4 @@ int	render(t_data_game *g)
 	frame++;
 	return (0);
 }
-
-int	main(int ac, char **av)
-{
-	t_data_game	*_game;
-
-	if (ac != 2)
-		return (syntax_error(true), EXIT_FAILURE);
-	_game = ft_malloc(sizeof(t_data_game), ALLOC);
-	_game->config = ft_malloc(sizeof(t_config), ALLOC);
-	_game->player = ft_malloc(sizeof(t_player), ALLOC);
-	ft_bzero(_game->config->textures, sizeof(char *) * TEXTURE_COUNT);
-	_game->_img = ft_malloc(sizeof(t_imag), ALLOC);
-	_game->_mlx = mlx_init();
-	if (!_game->_mlx)
-		return (ft_putendl_fd("Error:\nmlx_init failed.", STDERR), false);
-	if (!parsing(av[1], _game))
-		return (ft_malloc(CLEAR, CLEAR), EXIT_FAILURE);
-	init_textures(_game);
-	init_player_hand_textures(_game);
-	player_init(_game);
-	init_textures_data(_game);
-	printf("poist p_x : %f\n", _game->player->_x);
-	printf("poist p_y : %f\n", _game->player->_y);
-	_mlx_init_data(_game);
-	mlx_hook(_game->_win_mlx, KeyPress, KeyPressMask, control_key_, _game);
-	mlx_mouse_hook(_game->_win_mlx, control_gun_key, _game);
-	mlx_loop_hook(_game->_mlx, render, _game);
-	mlx_loop(_game->_mlx);
-	// _mlx_init_data(_game);
-	// start_simulation(_game);
-	// init_window(_game);
-	ft_malloc(CLEAR, CLEAR);
-	return (EXIT_SUCCESS);
-}
+*/
