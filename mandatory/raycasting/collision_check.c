@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:17:10 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/25 14:17:20 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/27 12:42:10 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ bool	_hase_wall(t_data_game *_game, double dx, double dy)
 	return (is_wall(_game, dx, dy)
 		|| is_wall(_game, dx + 1, dy + 1)
 		|| is_wall(_game, dx - 1, dy + 1)
-	 	|| is_wall(_game, dx + 1, dy - 1)
-	 	|| is_wall(_game, dx - 1, dy - 1));
+		|| is_wall(_game, dx + 1, dy - 1)
+		|| is_wall(_game, dx - 1, dy - 1));
 }
 
 bool	is_wall(t_data_game *_game, double x, double y)
@@ -29,11 +29,12 @@ bool	is_wall(t_data_game *_game, double x, double y)
 	_game->is_door = false;
 	grid_x = (int)(x / TILE_SIZE);
 	grid_y = (int)(y / TILE_SIZE);
-	if (grid_x < 0 || grid_y < 0 || grid_y >= _game->map_height || grid_x >= _game->map_width)
+	if (grid_x < 0 || grid_y < 0 || grid_y >= _game->map_height
+		|| grid_x >= _game->map_width)
 		return (true);
 	if (_game->map[grid_y][grid_x] == '1')
 		return (true);
-	if ( _game->map[grid_y][grid_x] == 'D')
+	if (_game->map[grid_y][grid_x] == 'D')
 		return (_game->is_door = true, true);
 	return (false);
 }
