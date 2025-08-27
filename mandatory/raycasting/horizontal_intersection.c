@@ -12,42 +12,64 @@
 
 #include "../../includes/Cub3D.h"
 
-bool	cast_horizontal(t_data_game *g, t_ray *ray, t_point *hit, double *dist)
+t_point	get_first_horizontal_intercept(t_ray *ray)
 {
-	t_point step;
-	t_point intercept;
+	t_point	intercept;
+	double	value_tan;
 
+	value_tan = tan(ray->ray_angle);
 	intercept.y = floor(ray->player.y / TILE_SIZE) * TILE_SIZE;
 	if (is_facing_down(ray->ray_angle))
 		intercept.y += TILE_SIZE;
-
-	intercept.x = ray->player.x + (intercept.y - ray->player.y) / tan(ray->ray_angle);
-
-	step.y = TILE_SIZE * (is_facing_up(ray->ray_angle) ? -1 : 1);
-	step.x = TILE_SIZE / tan(ray->ray_angle);
-	if ((is_facing_left(ray->ray_angle) && step.x > 0) ||
-		(is_facing_right(ray->ray_angle) && step.x < 0))
-		step.x *= -1;
-
-	double next_x = intercept.x;
-	double next_y = intercept.y;
-
-	while (next_x >= 0 && next_y >= 0 &&
-		next_x < g->map_width * TILE_SIZE &&
-		next_y < g->map_height * TILE_SIZE)
-	{
-		int map_x = (int)next_x;
-		int map_y = (int)(next_y + (is_facing_up(ray->ray_angle) ? -1 : 0));
-		if (is_wall(g, map_x, map_y)) {
-			if (g->is_door)
-				g->is_door_h = true;
-			*hit = (t_point){next_x, next_y};
-			*dist = hypot(next_x - ray->player.x, next_y - ray->player.y);
-			return true;
-		}
-		next_x += step.x;
-		next_y += step.y;
-	}
-	return false;
+	intercept.x = ray->player.x + (intercept.y - ray->player.y) / value_tan;
+	return (intercept);
 }
 
+t_point	get_horizontal_ray_step(t_ray *ray)
+{
+	t_point	step;
+
+	step.y = TILE_SIZE;
+	if (is_facing_up(ray->ray_angle))
+		step.y *= -1;
+	step.x = TILE_SIZE / tan(ray->ray_angle);
+	if ((is_facing_left(ray->ray_angle) && step.x > 0)
+		|| (is_facing_right(ray->ray_angle) && step.x < 0))
+		step.x *= -1;
+	return (step);
+}
+
+bool	is_within_map_bounds(t_data_game *_game, t_point next)
+{
+	return (next.x >= 0 && next.y >= 0
+		&& next.x < _game->map_width * TILE_SIZE
+		&& next.y < _game->map_height * TILE_SIZE);
+}
+
+bool	cast_horizontal(t_data_game *g, t_ray *ray, t_point *hit, double *dist)
+{
+	t_point	step;
+	t_point	map_;
+	t_point	next;
+
+	next = get_first_horizontal_intercept(ray);
+	step = get_horizontal_ray_step(ray);
+	while (is_within_map_bounds(g, next))
+	{
+		map_.x = (int)next.x;
+		map_.y = (int)(next.y);
+		if (is_facing_up(ray->ray_angle))
+			map_.y -= 1;
+		if (is_wall(g, map_.x, map_.y))
+		{
+			if (g->is_door)
+				g->is_door_h = true;
+			*hit = (t_point){next.x, next.y};
+			*dist = hypot(next.x - ray->player.x, next.y - ray->player.y);
+			return (true);
+		}
+		next.x += step.x;
+		next.y += step.y;
+	}
+	return (false);
+}
