@@ -36,6 +36,7 @@ SRC	= $(SRC_DIR)/main.c \
 	  $(PARSING_DIR)/destroy_image.c \
 	  $(MANAGE_PLAYER_DIR)/player_init.c \
 	  $(MANAGE_PLAYER_DIR)/player_control.c \
+	  $(MANAGE_PLAYER_DIR)/manage_door.c \
 	  $(DRAW_MAPS_DIR)/map_renderer.c \
 	  $(DRAW_MAPS_DIR)/mlx_utils.c \
 	  $(DRAW_MAPS_DIR)/minimap.c \
