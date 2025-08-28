@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:20:54 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 10:38:35 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 11:35:38 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,6 +295,12 @@ unsigned int	blend_color(unsigned int src, unsigned int bg,
 /* -------------------------------------------------------------------------- */
 int				control_key_(int keycode, t_data_game *_game);
 void			_player_move(int key, t_data_game *_game);
+
+/* -------------------------------------------------------------------------- */
+/*                          manage_door.c 		    		      */
+/* -------------------------------------------------------------------------- */
+bool			is_door(t_data_game *_game, double px, double py);
+void			open_door(t_data_game *_g, t_point check_);
 
 /* -------------------------------------------------------------------------- */
 /*                          ray_casting.c 				      */
