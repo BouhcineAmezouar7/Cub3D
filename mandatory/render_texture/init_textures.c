@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:18:42 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 10:23:37 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 11:23:28 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../includes/Cub3D.h"
@@ -51,7 +51,8 @@ bool	init_textures_address(t_texture *texture)
 	if (!texture->no_img->addr || !texture->so_img->addr
 		|| !texture->dr_img->addr || !texture->we_img->addr
 		|| !texture->ea_img->addr || !texture->sk_img->addr)
-		return (syntax_error(8), ft_malloc(CLEAR, CLEAR), exit(EXIT_FAILURE), false);
+		return (syntax_error(8), ft_malloc(CLEAR, CLEAR),
+			exit(EXIT_FAILURE), false);
 	return (true);
 }
 
