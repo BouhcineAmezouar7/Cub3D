@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 16:53:10 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/27 13:11:06 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 11:40:18 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,6 @@ void	cast_ray(t_data_game *g, t_ray *ray)
 		ray->distance = v_dist;
 		ray->was_hit_vertical = 1;
 	}
-/*	else
-	{
-		ray->hit = ray->player; // no hit
-		ray->distance = 0;
-		ray->was_hit_vertical = -1;
-		printf("distance is 0hh\n");
-	}*/
 }
 
 void	init_ray(t_ray *ray, t_data_game *_game)
