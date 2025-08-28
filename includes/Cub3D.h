@@ -6,7 +6,7 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:20:54 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 15:03:59 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/28 17:51:05 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,9 +242,9 @@ void			check_file_name(char *file_name);
 void			syntax_error(short option);
 
 /* -------------------------------------------------------------------------- */
-/*                             parse_maps.c                                   */
+/*                             config_parser.c                                */
 /* -------------------------------------------------------------------------- */
-void			parse_config(t_data_game *_game);
+bool			parse_config(t_data_game *_game);
 char			**parse_map(t_data_game *_game);
 bool			parsing(char *filename, t_data_game *_game);
 
@@ -254,7 +254,6 @@ bool			parsing(char *filename, t_data_game *_game);
 // file_reading.c
 t_list			*listnew(void *content);
 t_list			*file_reading(short fd);
-void			Print_list(t_list *_list);
 t_texture_type	get_texturs_type(char *line);
 
 /* -------------------------------------------------------------------------- */
@@ -356,9 +355,13 @@ int				_destory_window(t_data_game *_game);
 int				control_key_(int keycode, t_data_game *_game);
 
 /* -------------------------------------------------------------------------- */
-/*                             check_filename                                 */
+/*                             validate_textures.c                            */
 /* -------------------------------------------------------------------------- */
 void			validate_textures(t_config *_config);
+bool			check_filename_xpm(char *file_name, char *str);
+int				shift_color(int r, int g, int b);
+bool			validate_colors(t_config *_config, t_data_game *_game);
+void			check_spaces(t_config *_config);
 
 /* -------------------------------------------------------------------------- */
 /*                             _mlx_init  			              */
@@ -367,9 +370,8 @@ bool			_mlx_init_data(t_data_game *_game);
 void			start_simulation(t_data_game *_game);
 
 /* -------------------------------------------------------------------------- */
-/*                             mlx_utils.c                                    */
+/*                             validate_textures.c                            */
 /* -------------------------------------------------------------------------- */
-void			validate_colors(t_config *_config, t_data_game *_game);
 void			map_is_closed(char **map, short size);
 bool			is_valid_map(t_data_game *_game);
 
@@ -395,6 +397,7 @@ void			init_textures(t_data_game *_game);
 bool			close_window(t_data_game *game);
 void			destroys_images(t_data_game *_g);
 void			destroy_player_hand(t_data_game *_g);
+void			_exit_with_error(void);
 
 void			validate_textures_and_colors(t_config *_config,
 					t_data_game *_game);
@@ -404,34 +407,32 @@ void			init_player_hand_textures(t_data_game *_game);
 void			update_player_hand_animation(t_data_game *_game);
 void			render_player_hand(t_data_game *_game);
 void			trigger_shooting_animation(t_data_game *_game);
-unsigned	int		get_pixel(t_imag *tex, int x, int y);
 int				control_gun_key(int button, int x, int y,
 					t_data_game *_game);
 
 /* -------------------------------------------------------------------------- */
-/*                             validate_map_utils.c                             */
+/*                             validate_map_utils.c                           */
 /* -------------------------------------------------------------------------- */
-bool				is_valid_cell(char c);
-bool				check_map_if_closed(t_data_game *_game);
-bool				check_top_and_bottum(t_data_game *_game);
-bool				check_right_and_left(t_data_game *_game);
-int					ft_count(const char *str);
-char				*remove_space(char *str);
+bool			is_valid_cell(char c);
+bool			check_map_if_closed(t_data_game *_game);
+bool			check_top_and_bottum(t_data_game *_game);
+bool			check_right_and_left(t_data_game *_game);
+int				ft_count(const char *str);
+char			*remove_space(char *str);
 
 /* -------------------------------------------------------------------------- */
 /*                             minimap_utils.c                                */
 /* -------------------------------------------------------------------------- */
-int					is_inside_circle(t_vars var);
-void				draw_minimap_border(t_data_game *_game);
-void				draw_minimap_background(t_data_game *_game);
-void				convert_screen_to_world(t_data_game *_game, int screen_x,
-						int screen_y, t_point *world);
-void				draw_minimap_pixel(t_data_game *_game, int screen_x,
-						int screen_y, t_point world);
-void				draw_direction_line(t_data_game *_g);
+int				is_inside_circle(t_vars var);
+void			draw_minimap_border(t_data_game *_game);
+void			draw_minimap_background(t_data_game *_game);
+void			convert_screen_to_world(t_data_game *_game, int screen_x,
+					int screen_y, t_point *world);
+void			draw_minimap_pixel(t_data_game *_game, int screen_x,
+					int screen_y, t_point world);
+void			draw_direction_line(t_data_game *_g);
 
-void				check_spaces(t_config *_config);
-void				check_colors(t_config *config, int i);
+void			check_colors(t_config *config, int i);
 
-
+struct s_game	*data_struc(void);
 #endif
