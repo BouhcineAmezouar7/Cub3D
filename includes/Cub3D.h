@@ -233,7 +233,7 @@ t_list			*file_reading(short fd);
 void			Print_list(t_list *_list);
 
 /* -------------------------------------------------------------------------- */
-/*                             angle_direction.c                              */
+/*                             mlx_utils.c                                    */
 /* -------------------------------------------------------------------------- */
 void			my_mlx_pixel_put(t_imag *_img, int x, int y, int color);
 void			clear_image(t_imag *img, int color);
@@ -329,7 +329,6 @@ t_texture_type	get_texturs_type(char *line);
 /* -------------------------------------------------------------------------- */
 int				_destory_window(t_data_game *_game);
 int				control_key_(int keycode, t_data_game *_game);
-void			render_map(t_data_game *_game);
 
 /* -------------------------------------------------------------------------- */
 /*                             check_filename                                 */
@@ -343,18 +342,14 @@ bool			_mlx_init_data(t_data_game *_game);
 void			start_simulation(t_data_game *_game);
 
 /* -------------------------------------------------------------------------- */
-/*                             map_renderer.c                                 */
+/*                             mlx_utils.c                                    */
 /* -------------------------------------------------------------------------- */
-void			draw_map(t_data_game *_game);
-void			my_mlx_pixel_put(t_imag *_img, int x, int y, int color);
-
 void			validate_colors(t_config *_config, t_data_game *_game);
 void			map_is_closed(char **map, short size);
 bool			is_valid_map(t_data_game *_game);
 
 void			draw_line(t_data_game *_game, t_point start_p,
 					t_point end_p, int color);
-bool			is_wall(t_data_game *_game, double x, double y);
 
 /* -------------------------------------------------------------------------- */
 /*                             casr_all_rays.c                                */
