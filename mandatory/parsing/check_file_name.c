@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_file_name.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 16:41:44 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 14:29:49 by bamezoua         ###   ########.fr       */
+/*   Created: 2025/08/28 16:53:03 by ybounite          #+#    #+#             */
+/*   Updated: 2025/08/28 16:55:44 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	check_file_name(char *file_name)
 {
 	if (!file_name || !check_filename(file_name, ".cub"))
 	{
-		ft_putstr_fd("Erroe:\nfile name is incorrect!\n", 2);
-		exit(EXIT_FAILURE);
+		ft_putendl_fd("Erroe:\nfile name is incorrect!", STDERR);
+		_exit_with_error();
 	}
 }
