@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:20:54 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/27 12:56:59 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 10:38:35 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,29 +182,29 @@ typedef struct s_wall_slice
 
 typedef struct s_game
 {
-	bool		is_door;
-	bool		is_door_h;
-	bool		is_door_v;
-	bool		h_found;
-	bool		v_found;
-	short		fd;
-	short		size;
-	char		**map;
-	char		**map_cpy;
-	void		*_mlx;
-	void		*_win_mlx;
-	char		spawm_dir;
-	int			map_width;
-	int			map_height;
-	t_imag		*_img;
-	t_list		*list;
-	t_list		*map_start;
-	t_config	*config;
-	t_player	*player;
-	t_ray		ray;
-	t_texture	*texture;
+	bool			is_door;
+	bool			is_door_h;
+	bool			is_door_v;
+	bool			h_found;
+	bool			v_found;
+	bool			clos_win;
+	short			fd;
+	short			size;
+	char			**map;
+	void			*_mlx;
+	void			*_win_mlx;
+	char			spawm_dir;
+	t_imag			*_img;
+	t_list			*list;
+	t_list			*map_start;
+	t_config		*config;
+	t_player		*player;
+	t_ray			ray;
+	t_texture		*texture;
 	t_player_hand	*player_hand;
-}			t_data_game;
+	int				map_width;
+	int				map_height;
+}					t_data_game;
 
 /* -------------------------------------------------------------------------- */
 /*                             check_file_name.c                              */
@@ -346,7 +346,6 @@ void			validate_colors(t_config *_config, t_data_game *_game);
 void			map_is_closed(char **map, short size);
 bool			is_valid_map(t_data_game *_game);
 
-void			raycasting(t_data_game *_game);
 void			draw_line(t_data_game *_game, t_point start_p,
 					t_point end_p, int color);
 bool			is_wall(t_data_game *_game, double x, double y);
@@ -355,13 +354,25 @@ bool			is_wall(t_data_game *_game, double x, double y);
 /*                             casr_all_rays.c                                */
 /* -------------------------------------------------------------------------- */
 void			cast_all_rays(t_data_game *_game);
+void			raycasting(t_data_game *_game);
+
+/* -------------------------------------------------------------------------- */
+/*                             init_textures.c                                */
+/* -------------------------------------------------------------------------- */
+bool			init_textures_data(t_data_game *_game);
+bool			init_textures_address(t_texture *texture);
 void			init_textures(t_data_game *_game);
+
+/* -------------------------------------------------------------------------- */
+/*                             destroy_image.c                                */
+/* -------------------------------------------------------------------------- */
+bool			close_window(t_data_game *game);
+void			destroys_images(t_data_game *_g);
+void			destroy_player_hand(t_data_game *_g);
 
 void			validate_textures_and_colors(t_config *_config,
 					t_data_game *_game);
 void			draw_minimap(t_data_game *_game);
-void			init_textures_data(t_data_game *_game);
-
 void			_draw_line(t_data_game *g, t_point start, t_point end,
 					int color);
 
