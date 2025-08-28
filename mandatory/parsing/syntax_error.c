@@ -24,5 +24,10 @@ void	syntax_error(short option)
 		ft_putendl_fd("Error\nMemory allocation failed", STDERR);
 	else if (option == 5)
 		ft_putendl_fd("Erroe\nincorrect texture .xpm", STDERR);
-	// ft_malloc(CLEAR, CLEAR);
+	else if (option == 6)
+		ft_putendl_fd("Error:\nmlx_init failed.", STDERR);
+	else if (option == 7)
+		ft_putendl_fd("Error:\nFailed to load textures.", STDERR);
+	else if (option == 8)
+		ft_putendl_fd("Error: Address Failed to load textures.", STDERR);
 }

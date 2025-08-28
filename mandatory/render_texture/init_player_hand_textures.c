@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:00:17 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/26 18:37:26 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/27 18:51:44 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ static void	init_player_hand_memory(t_data_game *_game)
 
 void	init_player_hand_textures(t_data_game *_game)
 {
-	int i;
-	char filename[256];
+	int		i;
+	char	filename[256];
 
 	init_player_hand_memory(_game);
 	i = 0;

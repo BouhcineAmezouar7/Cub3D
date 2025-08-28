@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:18:42 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/26 18:13:31 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 10:23:37 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../includes/Cub3D.h"
@@ -20,9 +20,15 @@ void	init_textures(t_data_game *_game)
 	_game->texture->ea = _game->config->textures[EA_TEXTURE];
 	_game->texture->door = "./textures/door1.xpm";
 	_game->texture->sky = "./textures/sky.xpm";
+	_game->texture->no_img = ft_malloc(sizeof(t_imag), ALLOC);
+	_game->texture->so_img = ft_malloc(sizeof(t_imag), ALLOC);
+	_game->texture->we_img = ft_malloc(sizeof(t_imag), ALLOC);
+	_game->texture->ea_img = ft_malloc(sizeof(t_imag), ALLOC);
+	_game->texture->dr_img = ft_malloc(sizeof(t_imag), ALLOC);
+	_game->texture->sk_img = ft_malloc(sizeof(t_imag), ALLOC);
 }
 
-void	init_textures_address(t_texture *texture)
+bool	init_textures_address(t_texture *texture)
 {
 	texture->no_img->addr = mlx_get_data_addr(texture->no_img->img,
 			&texture->no_img->bit_per_pixel, &texture->no_img->line_len,
@@ -42,25 +48,17 @@ void	init_textures_address(t_texture *texture)
 	texture->sk_img->addr = mlx_get_data_addr(texture->sk_img->img,
 			&texture->sk_img->bit_per_pixel,
 			&texture->sk_img->line_len, &texture->sk_img->endian);
-	if (!texture->no_img->addr || !texture->so_img->addr || !texture->dr_img->addr
-		|| !texture->we_img->addr || !texture->ea_img->addr)
-	{
-		ft_putendl_fd("Error: Address Failed to load textures.", STDERR);
-		ft_malloc(CLEAR, CLEAR);
-		exit(EXIT_FAILURE);
-	}
+	if (!texture->no_img->addr || !texture->so_img->addr
+		|| !texture->dr_img->addr || !texture->we_img->addr
+		|| !texture->ea_img->addr || !texture->sk_img->addr)
+		return (syntax_error(8), ft_malloc(CLEAR, CLEAR), exit(EXIT_FAILURE), false);
+	return (true);
 }
 
-void	init_textures_data(t_data_game *_game)
+bool	init_textures_data(t_data_game *_game)
 {
 	t_texture	*texture;
 
-	_game->texture->no_img = ft_malloc(sizeof(t_imag), ALLOC);
-	_game->texture->so_img = ft_malloc(sizeof(t_imag), ALLOC);
-	_game->texture->we_img = ft_malloc(sizeof(t_imag), ALLOC);
-	_game->texture->ea_img = ft_malloc(sizeof(t_imag), ALLOC);
-	_game->texture->dr_img = ft_malloc(sizeof(t_imag), ALLOC);
-	_game->texture->sk_img = ft_malloc(sizeof(t_imag), ALLOC);
 	texture = _game->texture;
 	texture->no_img->img = mlx_xpm_file_to_image(_game->_mlx, texture->no,
 			&texture->no_img->width, &texture->no_img->height);
@@ -74,13 +72,12 @@ void	init_textures_data(t_data_game *_game)
 			&texture->dr_img->width, &texture->dr_img->height);
 	texture->sk_img->img = mlx_xpm_file_to_image(_game->_mlx, texture->sky,
 			&texture->sk_img->width, &texture->sk_img->height);
-	if (!texture->no_img->img || !texture->so_img->img || !texture->dr_img->img
-		|| !texture->we_img->img || !texture->ea_img->img)
-	{
-		ft_putendl_fd("Error: Failed to load textures.", STDERR);
-		ft_malloc(CLEAR, CLEAR);
-		exit(EXIT_FAILURE);
-	}
+	if (!texture->no_img->img || !texture->so_img->img
+		|| !texture->dr_img->img || !texture->we_img->img
+		|| !texture->ea_img->img || !texture->sk_img->img)
+		return (syntax_error(7), ft_malloc(CLEAR, CLEAR),
+			exit(EXIT_FAILURE), false);
 	init_textures_address(texture);
 	_game->texture = texture;
+	return (true);
 }

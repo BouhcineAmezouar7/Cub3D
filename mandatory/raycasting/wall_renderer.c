@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 12:52:22 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/27 13:00:28 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/27 18:48:26 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ int	get_tex_x(t_ray *ray, t_imag *textuer)
 	return (tex_x * textuer->width / TILE_SIZE);
 }
 
-void	draw_wall_strip(t_data_game *_g, t_ray *ray, t_imag *tex, t_data_slice sd)
+void	draw_wall_strip(t_data_game *_g, t_ray *ray, t_imag *tex,
+	t_data_slice sd)
 {
-	int		y;
-	int		d;
+	int				y;
+	int				d;
 	unsigned int	color;
 	unsigned int	final_color;
 
@@ -36,7 +37,7 @@ void	draw_wall_strip(t_data_game *_g, t_ray *ray, t_imag *tex, t_data_slice sd)
 		d = (y + (sd.wall_height / 2.0)) - WINDOW_HEIGHT / 2.0;
 		d *= tex->height;
 		sd.tex_y = d / sd.wall_height;
-		sd.alpha = 1.0 - (ray->distance / 1000);
+		sd.alpha = 1.0 - (ray->distance / 800);
 		color = get_pixel(tex, sd.tex_x, sd.tex_y);
 		if (sd.alpha < 0)
 			sd.alpha = 0;
