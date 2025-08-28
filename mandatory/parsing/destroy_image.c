@@ -25,6 +25,17 @@ void	destroy_player_hand(t_data_game *_g)
 	}
 }
 
+void	_exit_with_error(void)
+{
+	if (data_struc()->_mlx)
+	{
+		mlx_destroy_display(data_struc()->_mlx);
+		free(data_struc()->_mlx);
+	}
+	ft_malloc(CLEAR, CLEAR);
+	exit(EXIT_FAILURE);
+}
+
 void	destroys_images(t_data_game *_g)
 {
 	if (_g->_img->img)
