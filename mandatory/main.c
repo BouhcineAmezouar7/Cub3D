@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/27 18:16:40 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 14:27:21 by bamezoua         ###   ########.fr       */
+/*   Created: 2025/08/28 16:57:49 by ybounite          #+#    #+#             */
+/*   Updated: 2025/08/28 16:59:42 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Cub3D.h"
+
+struct s_game	*data_struc(void)
+{
+	static struct s_game	data_struc = {0};
+
+	return (&data_struc);
+}
 
 int	render(t_data_game *g)
 {
@@ -73,8 +80,9 @@ int	main(int ac, char **av)
 	_game->_mlx = mlx_init();
 	if (!_game->_mlx)
 		return (syntax_error(6), ft_malloc(CLEAR, CLEAR), false);
+	data_struc()->_mlx = _game->_mlx;
 	if (!parsing(av[1], _game))
-		return (ft_malloc(CLEAR, CLEAR), EXIT_FAILURE);
+		return (_exit_with_error(), EXIT_FAILURE);
 	start_simulation(_game);
 	ft_malloc(CLEAR, CLEAR);
 	return (EXIT_SUCCESS);
