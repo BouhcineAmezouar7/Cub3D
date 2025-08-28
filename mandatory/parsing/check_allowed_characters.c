@@ -6,7 +6,7 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 16:44:57 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/23 10:49:15 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/28 14:32:10 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ bool	check_allowed_characters(t_data_game *_game)
 			c = _game->map[y][x];
 			if (!isplayer_position(c) && c != '1' && c != 'D'
 				&& c != '0' && c != ' ' && c != '\n')
-				return (ft_putendl_fd("Error\nInvalid character", STDERR), false);
+				return (syntax_error(9), false);
 			if (isplayer_position(c))
 				player_count++;
 			x++;
@@ -41,6 +41,6 @@ bool	check_allowed_characters(t_data_game *_game)
 		y++;
 	}
 	if (player_count != 1)
-		return (ft_putendl_fd("Error\nJest one player position", STDERR), false);
-	return true;
+		return (syntax_error(10), false);
+	return (true);
 }

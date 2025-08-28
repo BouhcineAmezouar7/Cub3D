@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 18:16:40 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/27 18:16:43 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 14:27:21 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	start_simulation(t_data_game *_game)
 	init_player_hand_textures(_game);
 	player_init(_game);
 	init_textures_data(_game);
+	_game->minimap = ft_malloc(sizeof(t_minimap), ALLOC);
 	_mlx_init_data(_game);
 	mlx_hook(_game->_win_mlx, KeyPress, KeyPressMask, control_key_, _game);
 	mlx_mouse_hook(_game->_win_mlx, control_gun_key, _game);
@@ -78,7 +79,7 @@ int	main(int ac, char **av)
 	ft_malloc(CLEAR, CLEAR);
 	return (EXIT_SUCCESS);
 }
-/* 
+/*
 void	_draw_line(t_data_game *g, t_point start, t_point end, int color)
 {
 	double	dx;

@@ -6,7 +6,7 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 19:03:20 by ybounite          #+#    #+#             */
-/*   Updated: 2025/07/19 10:00:14 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/28 15:00:03 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,18 @@ void	syntax_error(short option)
 		ft_putendl_fd("Error:\nFailed to load textures.", STDERR);
 	else if (option == 8)
 		ft_putendl_fd("Error: Address Failed to load textures.", STDERR);
+	else if (option == 9)
+		ft_putendl_fd("Error\nInvalid character", STDERR);
+	else if (option == 10)
+		ft_putendl_fd("Error\nJest one player position", STDERR);
+}
+
+void	check_colors(t_config *config, int i)
+{
+	if (!config->textures[i])
+	{
+		printf("Error: Missing color texture\n");
+		ft_malloc(CLEAR, CLEAR);
+		exit(1);
+	}
 }

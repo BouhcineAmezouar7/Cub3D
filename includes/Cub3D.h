@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:20:54 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 11:35:38 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 15:03:59 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,29 @@ typedef struct s_wall_slice
 	int			tex_y;
 }			t_data_slice;
 
+typedef struct s_minimap
+{
+	double			line_length;
+	double			end_x;
+	double			end_y;
+	double			d_dx;
+	double			d_dy;
+	double			steps;
+	int				lx;
+	int				ly;
+	int				x;
+	int				y;
+}					t_minimap;
+
+typedef struct s_vars
+{
+	int				x;
+	int				y;
+	int				center_x;
+	int				center_y;
+	int				radius;
+}					t_vars;
+
 typedef struct s_game
 {
 	bool			is_door;
@@ -204,6 +227,7 @@ typedef struct s_game
 	t_player_hand	*player_hand;
 	int				map_width;
 	int				map_height;
+	t_minimap		*minimap;
 }					t_data_game;
 
 /* -------------------------------------------------------------------------- */
@@ -231,6 +255,7 @@ bool			parsing(char *filename, t_data_game *_game);
 t_list			*listnew(void *content);
 t_list			*file_reading(short fd);
 void			Print_list(t_list *_list);
+t_texture_type	get_texturs_type(char *line);
 
 /* -------------------------------------------------------------------------- */
 /*                             mlx_utils.c                                    */
@@ -374,8 +399,6 @@ void			destroy_player_hand(t_data_game *_g);
 void			validate_textures_and_colors(t_config *_config,
 					t_data_game *_game);
 void			draw_minimap(t_data_game *_game);
-void			_draw_line(t_data_game *g, t_point start, t_point end,
-					int color);
 
 void			init_player_hand_textures(t_data_game *_game);
 void			update_player_hand_animation(t_data_game *_game);
@@ -384,4 +407,31 @@ void			trigger_shooting_animation(t_data_game *_game);
 unsigned	int		get_pixel(t_imag *tex, int x, int y);
 int				control_gun_key(int button, int x, int y,
 					t_data_game *_game);
+
+/* -------------------------------------------------------------------------- */
+/*                             validate_map_utils.c                             */
+/* -------------------------------------------------------------------------- */
+bool				is_valid_cell(char c);
+bool				check_map_if_closed(t_data_game *_game);
+bool				check_top_and_bottum(t_data_game *_game);
+bool				check_right_and_left(t_data_game *_game);
+int					ft_count(const char *str);
+char				*remove_space(char *str);
+
+/* -------------------------------------------------------------------------- */
+/*                             minimap_utils.c                                */
+/* -------------------------------------------------------------------------- */
+int					is_inside_circle(t_vars var);
+void				draw_minimap_border(t_data_game *_game);
+void				draw_minimap_background(t_data_game *_game);
+void				convert_screen_to_world(t_data_game *_game, int screen_x,
+						int screen_y, t_point *world);
+void				draw_minimap_pixel(t_data_game *_game, int screen_x,
+						int screen_y, t_point world);
+void				draw_direction_line(t_data_game *_g);
+
+void				check_spaces(t_config *_config);
+void				check_colors(t_config *config, int i);
+
+
 #endif

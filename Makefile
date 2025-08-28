@@ -31,6 +31,7 @@ SRC	= $(SRC_DIR)/main.c \
 	  $(PARSING_DIR)/list_read.c \
 	  $(PARSING_DIR)/config_parser.c \
 	  $(PARSING_DIR)/validate_textures.c \
+	  $(PARSING_DIR)/validate_map_utils.c \
 	  $(PARSING_DIR)/check_allowed_characters.c\
 	  $(PARSING_DIR)/validate_map.c \
 	  $(PARSING_DIR)/destroy_image.c \
@@ -38,7 +39,9 @@ SRC	= $(SRC_DIR)/main.c \
 	  $(MANAGE_PLAYER_DIR)/player_control.c \
 	  $(MANAGE_PLAYER_DIR)/manage_door.c \
 	  $(DRAW_MAPS_DIR)/mlx_utils.c \
+	  $(DRAW_MAPS_DIR)/direction_line.c \
 	  $(DRAW_MAPS_DIR)/minimap.c \
+	  $(DRAW_MAPS_DIR)/minimap_utils.c \
 	  $(RAYCASTING_DIR)/mlx_init_data.c \
 	  $(RAYCASTING_DIR)/angle_direction.c \
 	  $(RAYCASTING_DIR)/collision_check.c \

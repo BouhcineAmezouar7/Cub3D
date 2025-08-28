@@ -6,37 +6,11 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 12:39:41 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/18 10:40:53 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/28 15:03:49 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/Cub3D.h"
-
-// int file_exists(const char *filename)
-// {
-
-// }
-
-char	*remove_space(char *str)
-{
-	short	i;
-	bool	isother_word;
-
-	i = 0;
-	isother_word = false;
-	while (str[i])
-	{
-		if (str[i] != ' ' && str[i] != '\n' && isother_word)
-			return (syntax_error(3), exit(EXIT_FAILURE), NULL);
-		if (str[i] == ' ' || str[i] == '\n')
-		{
-			str[i] = '\0';
-			isother_word = true;
-		}
-		i++;
-	}
-	return (str);
-}
 
 bool	check_filename_xpm(char *file_name, char *str)
 {
@@ -57,12 +31,11 @@ bool	check_filename_xpm(char *file_name, char *str)
 
 void	validate_textures(t_config *_config)
 {
-	short	i;
+	int	i;
 
 	i = 0;
 	while (i < 4)
 	{
-		// printf("-->%s\n", remove_space(_config->textures[i]));
 		if (!_config->textures[i]
 			|| !check_filename_xpm(remove_space(_config->textures[i]), ".xpm"))
 		{
@@ -88,8 +61,8 @@ int	shift_color(int r, int g, int b)
 
 void	check_spaces(t_config *_config)
 {
-	short	i;
-	short	j;
+	int	i;
+	int	j;
 
 	i = 4;
 	while (_config->textures[i])
@@ -115,30 +88,29 @@ void	check_spaces(t_config *_config)
 
 void	validate_colors(t_config *_config, t_data_game *_game)
 {
-	short	i;
+	int		i;
 	char	**split;
+	int		rgb[3];
 
-	int r, g, b;
 	i = 4;
-	check_spaces(_config);
 	while (i < 6)
 	{
+		check_colors(_config, i);
 		split = ft_split(_config->textures[i], ',');
 		if (!split | !split[0] || !split[1] || !split[2] || split[3])
 		{
-			printf("Error : Color must be R,G,B format\n");
 			ft_malloc(CLEAR, CLEAR);
 			exit(1);
 		}
-		r = ft_atoi(split[0]);
-		g = ft_atoi(split[1]);
-		b = ft_atoi(split[2]);
+		rgb[0] = ft_atoi(split[0]);
+		rgb[1] = ft_atoi(split[1]);
+		rgb[2] = ft_atoi(split[2]);
 		if (i == 4)
 			_config->floor_color = mlx_get_color_value(_game->_mlx,
-					shift_color(r, g, b));
+					shift_color(rgb[0], rgb[1], rgb[2]));
 		else if (i == 5)
 			_config->ceiling_color = mlx_get_color_value(_game->_mlx,
-					shift_color(r, g, b));
+					shift_color(rgb[0], rgb[1], rgb[2]));
 		i++;
 	}
 }

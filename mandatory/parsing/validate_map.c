@@ -1,78 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/28 10:53:53 by bamezoua          #+#    #+#             */
+/*   Updated: 2025/08/28 11:15:54 by bamezoua         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/Cub3D.h"
 
-bool	is_valid_cell(char c)
+char	*remove_space(char *str)
 {
-	return (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W'
-		|| c == 'D');
-}
-
-bool	check_top_and_bottum(t_data_game *_game)
-{
-	int	i;
-	int	j;
+	int		i;
+	bool	isother_word;
 
 	i = 0;
-	while (i < _game->map_height)
+	isother_word = false;
+	while (str[i])
 	{
-		j = 0;
-		if (i == 0 || i == _game->map_height - 1)
+		if (str[i] != ' ' && str[i] != '\n' && isother_word)
+			return (syntax_error(3), exit(EXIT_FAILURE), NULL);
+		if (str[i] == ' ' || str[i] == '\n')
 		{
-			while (_game->map[i][j])
-			{
-				if (_game->map[i][j] == 'N' || _game->map[i][j] == 'S'
-					|| _game->map[i][j] == 'E' || _game->map[i][j] == 'W')
-				{
-					printf("Invalid map: top or bottom row must be all walls\n");
-					return (false);
-				}
-				j++;
-			}
+			str[i] = '\0';
+			isother_word = true;
 		}
 		i++;
 	}
-	return (true);
-}
-
-bool	check_right_and_left(t_data_game *_game)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < _game->map_height)
-	{
-		j = 0;
-		if (_game->map[i][j] == 'N' || _game->map[i][j] == 'S'
-			|| _game->map[i][j] == 'E' || _game->map[i][j] == 'W'
-			|| _game->map[i][ft_strlen(_game->map[i]) - 1] == 'N')
-		{
-			printf("Invalid map: left or right column must be all walls\n");
-			return (false);
-		}
-		i++;
-	}
-	return (true);
-}
-
-bool	check_map_if_closed(t_data_game *_game)
-{
-	if (check_top_and_bottum(_game) == false)
-		return (false);
-	if (check_right_and_left(_game) == false)
-		return (false);
-	return (true);
-}
-
-int	ft_count(const char *s)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (i);
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	return (str);
 }
 
 //  if any 0 is closed by space or outside map => is not valide
@@ -101,7 +59,7 @@ static bool	check_adjacent_cells(t_data_game *_game, int i, int j, int width)
 
 	invalid = false;
 	if (i > 0 && (j >= ft_count(_game->map[i - 1]) || _game->map[i
-			- 1][j] == ' '))
+				- 1][j] == ' '))
 		invalid = true;
 	if (i < _game->map_height - 1 && (j >= ft_count(_game->map[i + 1])
 			|| _game->map[i + 1][j] == ' '))
@@ -112,7 +70,7 @@ static bool	check_adjacent_cells(t_data_game *_game, int i, int j, int width)
 		invalid = true;
 	if (invalid)
 	{
-		printf("Error\nInvalid map- valid cell adjacent to space or outside boundary\n");
+		printf("Error\nMap is not closed around position (%d, %d)\n", i, j);
 		return (false);
 	}
 	return (true);
@@ -140,9 +98,9 @@ static bool	validate_cell(t_data_game *_game, int i, int j, int width)
 
 bool	is_valid_map(t_data_game *_game)
 {
-	int i;
-	int j;
-	int width;
+	int	i;
+	int	j;
+	int	width;
 
 	if (check_map_if_closed(_game) == false)
 		return (false);

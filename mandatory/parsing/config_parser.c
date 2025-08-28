@@ -1,33 +1,16 @@
-		/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   config_parser.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 12:47:32 by ybounite          #+#    #+#             */
-/*   Updated: 2025/07/05 15:15:53 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 14:39:58 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/Cub3D.h"
-
-t_texture_type	get_texturs_type(char *line)
-{
-	if (!ft_strncmp(line, "NO ", 3))
-		return NO_TEXTURE;
-	else if (!ft_strncmp(line, "SO ", 3))
-		return SO_TEXTURE;
-	else if (!ft_strncmp(line, "WE ", 3))
-		return WE_TEXTURE;
-	else if (!ft_strncmp(line, "EA ", 3))
-		return EA_TEXTURE;
-	else if (!ft_strncmp(line , "F ", 2))
-		return F_COLOR;
-	else if (!ft_strncmp(line, "C ", 2))
-		return C_COLOR;
-	return IDNTIFIER_TEXTURE;
-}
 
 bool	parse_texture_line(t_data_game *_game, char *line)
 {
@@ -41,13 +24,13 @@ bool	parse_texture_line(t_data_game *_game, char *line)
 		return (syntax_error(2), true);
 	path_start = line + 2;
 	if (type <= EA_TEXTURE)
-		path_start++; // Skip 3 characters for "NO ", "SO " ...
+		path_start++;
 	while (*path_start == ' ')
 		path_start++;
 	_game->config->textures[type] = ft_strdup(path_start);
 	if (!_game->config->textures[type])
 		return (syntax_error(4), true);
-	return false;
+	return (false);
 }
 
 bool	isconfig(char *line)
@@ -59,12 +42,14 @@ bool	isconfig(char *line)
 
 bool	is_emty_line(char *str)
 {
-	short	i = 0;
+	short	i;
+
+	i = 0;
 	while (str[i] == ' ')
 		i++;
 	if (str[i] == '\n')
 		return (true);
-	return false;
+	return (false);
 }
 
 bool	is_map_line(char *line)
@@ -76,12 +61,12 @@ bool	is_map_line(char *line)
 			line++;
 			continue ;
 		}
-		if (*line != ' ' && *line != '0' && *line != '1'
-			&& *line != 'N' && *line != 'S' && *line != 'E' && *line != 'W')
-			return false;
+		if (*line != ' ' && *line != '0' && *line != '1' && *line != 'N'
+			&& *line != 'S' && *line != 'E' && *line != 'W')
+			return (false);
 		line++;
 	}
-	return true;
+	return (true);
 }
 
 void	parse_config(t_data_game *_game)
@@ -100,7 +85,8 @@ void	parse_config(t_data_game *_game)
 			tmp = tmp->next;
 			continue ;
 		}
-		if (is_map_line(line)){
+		if (is_map_line(line))
+		{
 			_game->map_start = tmp;
 			break ;
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_read.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 12:44:47 by ybounite          #+#    #+#             */
-/*   Updated: 2025/07/11 18:33:26 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 14:40:05 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,32 @@ t_list	*listnew(void *content)
 t_list	*file_reading(short fd)
 {
 	char	*line;
-	t_list	*_list = NULL;
-	while ((line = get_next_line(fd)))
+	t_list	*list;
+
+	list = NULL;
+	line = get_next_line(fd);
+	while (line)
 	{
-		ft_lstadd_back(&_list, listnew(line));
+		ft_lstadd_back(&list, listnew(line));
+		line = get_next_line(fd);
 	}
 	close(fd);
-	return _list;
+	return (list);
 }
 
-void	Print_list(t_list *_list)
+t_texture_type	get_texturs_type(char *line)
 {
-	while (_list)
-	{
-		printf("line : %s\n", (char *)_list->content);
-		_list = _list->next;
-	}
+	if (!ft_strncmp(line, "NO ", 3))
+		return (NO_TEXTURE);
+	else if (!ft_strncmp(line, "SO ", 3))
+		return (SO_TEXTURE);
+	else if (!ft_strncmp(line, "WE ", 3))
+		return (WE_TEXTURE);
+	else if (!ft_strncmp(line, "EA ", 3))
+		return (EA_TEXTURE);
+	else if (!ft_strncmp(line, "F ", 2))
+		return (F_COLOR);
+	else if (!ft_strncmp(line, "C ", 2))
+		return (C_COLOR);
+	return (IDNTIFIER_TEXTURE);
 }

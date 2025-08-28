@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_file_name.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 16:41:44 by ybounite          #+#    #+#             */
-/*   Updated: 2025/07/11 19:02:44 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 14:29:49 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ bool	check_filename(char *file_name, char *str)
 	}
 	return (true);
 }
-		
+
 void	check_file_name(char *file_name)
 {
-	// check if hindel file : 
 	if (!file_name || !check_filename(file_name, ".cub"))
 	{
 		ft_putstr_fd("Erroe:\nfile name is incorrect!\n", 2);
