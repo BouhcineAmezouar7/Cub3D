@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config_parser.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 12:47:32 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 14:39:58 by bamezoua         ###   ########.fr       */
+/*   Created: 2025/08/28 17:04:46 by ybounite          #+#    #+#             */
+/*   Updated: 2025/08/28 17:04:47 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ bool	is_map_line(char *line)
 	return (true);
 }
 
-void	parse_config(t_data_game *_game)
+bool	parse_config(t_data_game *_game)
 {
 	t_list	*tmp;
 	char	*line;
@@ -86,18 +86,12 @@ void	parse_config(t_data_game *_game)
 			continue ;
 		}
 		if (is_map_line(line))
-		{
-			_game->map_start = tmp;
-			break ;
-		}
+			return (_game->map_start = tmp, true);
 		if (isconfig(line))
 			parse_texture_line(_game, line);
 		else
-		{
-			syntax_error(3);
-			ft_malloc(CLEAR, CLEAR);
-			exit(EXIT_FAILURE);
-		}
+			return (syntax_error(3), _exit_with_error(), false);
 		tmp = tmp->next;
 	}
+	return (false);
 }

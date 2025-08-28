@@ -33,7 +33,6 @@ char	*remove_space(char *str)
 	return (str);
 }
 
-//  if any 0 is closed by space or outside map => is not valide
 static bool	validate_door_placement(t_data_game *_game, int i, int j, int width)
 {
 	if (j > 0 && j < width - 1 && i > 0 && i < _game->map_height - 1)
