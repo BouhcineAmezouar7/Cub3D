@@ -33,6 +33,7 @@ SRC	= $(SRC_DIR)/main.c \
 	  $(PARSING_DIR)/validate_textures.c \
 	  $(PARSING_DIR)/check_allowed_characters.c\
 	  $(PARSING_DIR)/validate_map.c \
+	  $(PARSING_DIR)/destroy_image.c \
 	  $(MANAGE_PLAYER_DIR)/player_init.c \
 	  $(MANAGE_PLAYER_DIR)/player_control.c \
 	  $(DRAW_MAPS_DIR)/map_renderer.c \
