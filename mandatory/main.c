@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 15:45:16 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/27 13:41:22 by ybounite         ###   ########.fr       */
+/*   Created: 2025/08/27 18:16:40 by ybounite          #+#    #+#             */
+/*   Updated: 2025/08/27 18:16:43 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_data_game	*initialize_game(void)
 
 	_game = ft_malloc(sizeof(t_data_game), ALLOC);
 	_game->config = ft_malloc(sizeof(t_config), ALLOC);
+	_game->texture = ft_malloc(sizeof(t_texture), ALLOC);
 	_game->player = ft_malloc(sizeof(t_player), ALLOC);
 	ft_bzero(_game->config->textures, sizeof(char *) * TEXTURE_COUNT);
 	_game->_img = ft_malloc(sizeof(t_imag), ALLOC);
@@ -54,8 +55,6 @@ void	start_simulation(t_data_game *_game)
 	init_player_hand_textures(_game);
 	player_init(_game);
 	init_textures_data(_game);
-	printf("poist p_x : %f\n", _game->player->_x);
-	printf("poist p_y : %f\n", _game->player->_y);
 	_mlx_init_data(_game);
 	mlx_hook(_game->_win_mlx, KeyPress, KeyPressMask, control_key_, _game);
 	mlx_mouse_hook(_game->_win_mlx, control_gun_key, _game);
@@ -72,7 +71,7 @@ int	main(int ac, char **av)
 	_game = initialize_game();
 	_game->_mlx = mlx_init();
 	if (!_game->_mlx)
-		return (ft_putendl_fd("Error:\nmlx_init failed.", STDERR), false);
+		return (syntax_error(6), ft_malloc(CLEAR, CLEAR), false);
 	if (!parsing(av[1], _game))
 		return (ft_malloc(CLEAR, CLEAR), EXIT_FAILURE);
 	start_simulation(_game);
