@@ -3,33 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   render_background.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:20:57 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/27 18:21:26 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/29 10:34:59 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cub3D.h"
+#include "../includes/Cub3D.h"
 
 void	draw_sky_and_floor(t_data_game *_game)
 {
-	t_imag	*sky_img;
 	int		y;
 	int		x;
-	int		color;
 
-	(1) && (y = 0), (sky_img = _game->texture->sk_img);
+	(1) && (y = 0);
 	while (y < WINDOW_HEIGHT / 2)
 	{
 		x = 0;
 		while (x < WINDOW_WIDTH)
-		{
-			color = get_pixel(sky_img,
-					x * sky_img->width / WINDOW_WIDTH,
-					y * sky_img->height / (WINDOW_HEIGHT / 2));
-			my_mlx_pixel_put(_game->_img, x++, y, color);
-		}
+			my_mlx_pixel_put(_game->_img, x++, y, _game->config->ceiling_color);
 		y++;
 	}
 	while (y < WINDOW_HEIGHT)

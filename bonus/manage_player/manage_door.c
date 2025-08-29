@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   manage_door.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:30:45 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 11:31:50 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:53:14 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cub3D.h"
+#include "../includes/Cub3D_bonus.h"
 
 bool	is_door(t_data_game *_game, double px, double py)
 {

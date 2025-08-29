@@ -6,11 +6,11 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:28:22 by bamezoua          #+#    #+#             */
-/*   Updated: 2025/08/28 12:40:55 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:53:14 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cub3D.h"
+#include "../includes/Cub3D_bonus.h"
 
 int	is_inside_circle(t_vars vars)
 {

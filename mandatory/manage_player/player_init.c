@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   player_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:41:31 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 11:27:54 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:54:39 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cub3D.h"
+#include "../includes/Cub3D.h"
 
 bool	is_spawm_direction(char c)
 {

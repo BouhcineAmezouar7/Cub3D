@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cub3D.h                                            :+:      :+:    :+:   */
+/*   Cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:20:54 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 17:51:05 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 20:46:46 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
-# include "../libraries/getline/get_next_line.h"
-# include "../libraries/libft/libft.h"
-# include "../minilibx-linux/mlx.h"
+# include "../../libraries/getline/get_next_line.h"
+# include "../../libraries/libft/libft.h"
+# include "../../minilibx-linux/mlx.h"
 # include <X11/X.h>
 # include <math.h>
 # include <stdbool.h>

@@ -6,11 +6,11 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 16:44:57 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 14:32:10 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:54:39 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cub3D.h"
+#include "../includes/Cub3D.h"
 
 bool	isplayer_position(char c)
 {
@@ -31,8 +31,8 @@ bool	check_allowed_characters(t_data_game *_game)
 		while (_game->map[y][x])
 		{
 			c = _game->map[y][x];
-			if (!isplayer_position(c) && c != '1' && c != 'D'
-				&& c != '0' && c != ' ' && c != '\n')
+			if (!isplayer_position(c) && c != '1' && c != '0' && c != ' '
+				&& c != '\n')
 				return (syntax_error(9), false);
 			if (isplayer_position(c))
 				player_count++;

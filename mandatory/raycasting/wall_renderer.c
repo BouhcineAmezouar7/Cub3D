@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   wall_renderer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 12:52:22 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/27 18:48:26 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:54:39 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cub3D.h"
+#include "../includes/Cub3D.h"
 
 int	get_tex_x(t_ray *ray, t_imag *textuer)
 {

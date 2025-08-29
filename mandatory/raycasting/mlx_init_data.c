@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init_data.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:22:09 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/27 13:13:04 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:54:39 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cub3D.h"
+#include "../includes/Cub3D.h"
 
 bool	_mlx_init_data(t_data_game *_g)
 {

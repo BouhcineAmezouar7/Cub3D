@@ -6,11 +6,11 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 19:03:20 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 15:00:03 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/29 10:27:36 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cub3D.h"
+#include "../includes/Cub3D.h"
 
 void	syntax_error(short option)
 {
@@ -33,7 +33,7 @@ void	syntax_error(short option)
 	else if (option == 9)
 		ft_putendl_fd("Error\nInvalid character", STDERR);
 	else if (option == 10)
-		ft_putendl_fd("Error\nJest one player position", STDERR);
+		ft_putendl_fd("Error\nJust one player position", STDERR);
 	else if (option == 11)
 		ft_putendl_fd("Error\nInvalid color expected (R,G,B)", STDERR);
 }

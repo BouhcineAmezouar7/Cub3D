@@ -6,11 +6,11 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:10:22 by bamezoua          #+#    #+#             */
-/*   Updated: 2025/08/28 13:10:55 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:52:28 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cub3D.h"
+#include "../includes/Cub3D_bonus.h"
 
 static void	calculate_direction_line_params(t_data_game *_g)
 {

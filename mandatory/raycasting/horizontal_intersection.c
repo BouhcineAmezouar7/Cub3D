@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   horizontal_intersection.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 15:19:58 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/14 15:20:02 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:54:39 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cub3D.h"
+#include "../includes/Cub3D.h"
 
 t_point	get_first_horizontal_intercept(t_ray *ray)
 {
@@ -41,8 +41,7 @@ t_point	get_horizontal_ray_step(t_ray *ray)
 
 bool	is_within_map_bounds(t_data_game *_game, t_point next)
 {
-	return (next.x >= 0 && next.y >= 0
-		&& next.x < _game->map_width * TILE_SIZE
+	return (next.x >= 0 && next.y >= 0 && next.x < _game->map_width * TILE_SIZE
 		&& next.y < _game->map_height * TILE_SIZE);
 }
 
@@ -62,8 +61,6 @@ bool	cast_horizontal(t_data_game *g, t_ray *ray, t_point *hit, double *dist)
 			map_.y -= 1;
 		if (is_wall(g, map_.x, map_.y))
 		{
-			if (g->is_door)
-				g->is_door_h = true;
 			*hit = (t_point){next.x, next.y};
 			*dist = hypot(next.x - ray->player.x, next.y - ray->player.y);
 			return (true);

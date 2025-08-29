@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   player_control.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 15:03:03 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 11:32:31 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:54:39 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cub3D.h"
+#include "../includes/Cub3D.h"
 
 void	_player_move(int key, t_data_game *_g)
 {
@@ -67,16 +67,5 @@ int	control_key_(int keycode, t_data_game *_g)
 		if (_g->player->angle >= 2)
 			_g->player->angle -= 2 * PI;
 	}
-	if (keycode == E_KEY)
-		open_door(_g, (t_point){_g->player->_x, _g->player->_y});
 	return (true);
-}
-
-int	control_gun_key(int button, int x, int y, t_data_game *_game)
-{
-	(void)x;
-	(void)y;
-	if (button == 1)
-		trigger_shooting_animation(_game);
-	return (0);
 }

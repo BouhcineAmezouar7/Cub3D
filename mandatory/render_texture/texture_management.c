@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   texture_management.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 11:30:12 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/27 11:41:41 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:54:39 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cub3D.h"
+#include "../includes/Cub3D.h"
 
 unsigned int	get_pixel(t_imag *tex, int x, int y)
 {
@@ -26,8 +26,6 @@ t_imag	*choose_texture(t_data_game *g, t_ray *ray)
 {
 	if (ray->was_hit_vertical == 1)
 	{
-		if (g->is_door_v)
-			return (g->texture->dr_img);
 		if (is_facing_left(ray->ray_angle))
 			return (g->texture->we_img);
 		else
@@ -35,8 +33,6 @@ t_imag	*choose_texture(t_data_game *g, t_ray *ray)
 	}
 	else
 	{
-		if (g->is_door_h)
-			return (g->texture->dr_img);
 		if (is_facing_down(ray->ray_angle))
 			return (g->texture->no_img);
 		else
@@ -72,17 +68,17 @@ unsigned int	blend_color(unsigned int src, unsigned int bg, double alpha)
 /*
 unsigned int	blend_color(unsigned int src, unsigned int bg, double alpha)
 {
-        int r1 = (src >> 16) & 0xFF;
-        int g1 = (src >> 8) & 0xFF;
-        int b1 = src & 0xFF;
+		int r1 = (src >> 16) & 0xFF;
+		int g1 = (src >> 8) & 0xFF;
+		int b1 = src & 0xFF;
 
-        int r2 = (bg >> 16) & 0xFF;
-        int g2 = (bg >> 8) & 0xFF;
-        int b2 = bg & 0xFF;
+		int r2 = (bg >> 16) & 0xFF;
+		int g2 = (bg >> 8) & 0xFF;
+		int b2 = bg & 0xFF;
 
-        int r = (int)(r1 * alpha + r2 * (1 - alpha));
-        int g = (int)(g1 * alpha + g2 * (1 - alpha));
-        int b = (int)(b1 * alpha + b2 * (1 - alpha));
+		int r = (int)(r1 * alpha + r2 * (1 - alpha));
+		int g = (int)(g1 * alpha + g2 * (1 - alpha));
+		int b = (int)(b1 * alpha + b2 * (1 - alpha));
 
-        return (r << 16) | (g << 8) | b;
+		return ((r << 16) | (g << 8) | b);
 }*/

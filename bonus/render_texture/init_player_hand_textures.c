@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_player_hand_textures.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:00:17 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/27 18:51:44 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:53:14 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cub3D.h"
+#include "../includes/Cub3D_bonus.h"
 
 static void	build_filename(char *filename, char *base, int frame_num, char *ext)
 {

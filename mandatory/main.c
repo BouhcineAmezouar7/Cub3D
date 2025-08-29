@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 16:57:49 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 16:59:42 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/29 10:34:00 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Cub3D.h"
+#include "includes/Cub3D.h"
 
 struct s_game	*data_struc(void)
 {
@@ -28,15 +28,7 @@ int	render(t_data_game *g)
 		clear_image(g->_img, BLACK);
 		draw_sky_and_floor(g);
 		_cast_all_rays(g);
-		draw_minimap(g);
-		if (g->player_hand->is_shooting)
-		{
-			if (g->player_hand->current_frame == g->player_hand->num_frames - 1)
-				g->player_hand->is_shooting = false;
-			update_player_hand_animation(g);
-		}
 		mlx_put_image_to_window(g->_mlx, g->_win_mlx, g->_img->img, 0, 0);
-		render_player_hand(g);
 		frame = 0;
 	}
 	frame++;
@@ -59,13 +51,11 @@ t_data_game	*initialize_game(void)
 void	start_simulation(t_data_game *_game)
 {
 	init_textures(_game);
-	init_player_hand_textures(_game);
+	// init_player_hand_textures(_game);
 	player_init(_game);
 	init_textures_data(_game);
-	_game->minimap = ft_malloc(sizeof(t_minimap), ALLOC);
 	_mlx_init_data(_game);
 	mlx_hook(_game->_win_mlx, KeyPress, KeyPressMask, control_key_, _game);
-	mlx_mouse_hook(_game->_win_mlx, control_gun_key, _game);
 	mlx_loop_hook(_game->_mlx, render, _game);
 	mlx_loop(_game->_mlx);
 }

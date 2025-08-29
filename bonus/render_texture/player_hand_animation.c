@@ -6,11 +6,11 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 18:52:19 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 14:44:47 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:53:14 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cub3D.h"
+#include "../includes/Cub3D_bonus.h"
 
 void	update_player_hand_animation(t_data_game *_game)
 {

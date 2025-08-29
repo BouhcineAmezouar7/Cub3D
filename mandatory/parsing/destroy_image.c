@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_image.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 16:43:23 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 10:42:13 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/28 20:07:14 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cub3D.h"
-
-void	destroy_player_hand(t_data_game *_g)
-{
-	short	i;
-
-	i = 0;
-	while (i < _g->player_hand->num_frames)
-	{
-		if (_g->player_hand->img[i])
-			mlx_destroy_image(_g->_mlx, _g->player_hand->img[i]->img);
-		i++;
-	}
-}
+#include "../includes/Cub3D.h"
 
 void	_exit_with_error(void)
 {
@@ -50,14 +37,11 @@ void	destroys_images(t_data_game *_g)
 		mlx_destroy_image(_g->_mlx, _g->texture->ea_img->img);
 	if (_g->texture->sk_img->img)
 		mlx_destroy_image(_g->_mlx, _g->texture->sk_img->img);
-	if (_g->texture->dr_img->img)
-		mlx_destroy_image(_g->_mlx, _g->texture->dr_img->img);
 }
 
 bool	close_window(t_data_game *game)
 {
 	destroys_images(game);
-	destroy_player_hand(game);
 	if (game->_win_mlx)
 	{
 		mlx_destroy_window(game->_mlx, game->_win_mlx);

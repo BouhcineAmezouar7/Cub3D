@@ -6,11 +6,11 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 12:00:00 by bamezoua          #+#    #+#             */
-/*   Updated: 2025/08/28 13:10:52 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:53:14 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cub3D.h"
+#include "../includes/Cub3D_bonus.h"
 
 void	draw_minimap_walls(t_data_game *_game)
 {

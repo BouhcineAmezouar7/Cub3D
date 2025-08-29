@@ -6,16 +6,15 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:07:00 by bamezoua          #+#    #+#             */
-/*   Updated: 2025/08/28 11:15:02 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:54:39 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cub3D.h"
+#include "../includes/Cub3D.h"
 
 bool	is_valid_cell(char c)
 {
-	return (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W'
-		|| c == 'D');
+	return (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
 
 bool	check_top_and_bottum(t_data_game *_game)

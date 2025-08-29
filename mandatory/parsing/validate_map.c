@@ -6,11 +6,11 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:53:53 by bamezoua          #+#    #+#             */
-/*   Updated: 2025/08/28 11:15:54 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/28 20:02:31 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/Cub3D.h"
+#include "../includes/Cub3D.h"
 
 char	*remove_space(char *str)
 {
@@ -33,32 +33,13 @@ char	*remove_space(char *str)
 	return (str);
 }
 
-static bool	validate_door_placement(t_data_game *_game, int i, int j, int width)
-{
-	if (j > 0 && j < width - 1 && i > 0 && i < _game->map_height - 1)
-	{
-		if (!(_game->map[i][j - 1] == '1' && _game->map[i][j + 1] == '1')
-			&& !(_game->map[i - 1][j] == '1' && _game->map[i + 1][j] == '1'))
-		{
-			printf("Error\nDoor must be enclosed by walls on opposite sides\n");
-			return (false);
-		}
-	}
-	else
-	{
-		printf("Error\nDoor cannot be at map boundary\n");
-		return (false);
-	}
-	return (true);
-}
-
 static bool	check_adjacent_cells(t_data_game *_game, int i, int j, int width)
 {
 	bool	invalid;
 
 	invalid = false;
 	if (i > 0 && (j >= ft_count(_game->map[i - 1]) || _game->map[i
-				- 1][j] == ' '))
+			- 1][j] == ' '))
 		invalid = true;
 	if (i < _game->map_height - 1 && (j >= ft_count(_game->map[i + 1])
 			|| _game->map[i + 1][j] == ' '))
@@ -77,11 +58,6 @@ static bool	check_adjacent_cells(t_data_game *_game, int i, int j, int width)
 
 static bool	validate_cell(t_data_game *_game, int i, int j, int width)
 {
-	if (_game->map[i][j] == 'D')
-	{
-		if (!validate_door_placement(_game, i, j, width))
-			return (false);
-	}
 	if (is_valid_cell(_game->map[i][j]))
 	{
 		if (i == 0 || i == _game->map_height - 1 || j == 0 || j == width - 1)
