@@ -6,7 +6,7 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:00:17 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 19:53:14 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/29 16:12:45 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static void	init_player_hand_memory(t_data_game *_game)
 	_game->player_hand = ft_malloc(sizeof(t_player_hand), ALLOC);
 	_game->player_hand->num_frames = 4;
 	_game->player_hand->current_frame = 0;
+	_game->player_hand->is_shooting = false;
 	_game->player_hand->img = ft_malloc(sizeof(t_imag *)
 			* _game->player_hand->num_frames, ALLOC);
 }

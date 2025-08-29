@@ -6,7 +6,7 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 16:57:49 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/29 10:34:00 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/29 16:16:45 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ t_data_game	*initialize_game(void)
 	_game->player = ft_malloc(sizeof(t_player), ALLOC);
 	ft_bzero(_game->config->textures, sizeof(char *) * TEXTURE_COUNT);
 	_game->_img = ft_malloc(sizeof(t_imag), ALLOC);
+	_game->clos_win = false;
 	return (_game);
 }
 
 void	start_simulation(t_data_game *_game)
 {
 	init_textures(_game);
-	// init_player_hand_textures(_game);
 	player_init(_game);
 	init_textures_data(_game);
 	_mlx_init_data(_game);

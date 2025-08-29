@@ -6,7 +6,7 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 16:57:49 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 20:41:31 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/29 16:13:25 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ struct s_game	*data_struc(void)
 int	render(t_data_game *g)
 {
 	static short	frame;
-
+	
 	if (frame == 100)
 	{
 		clear_image(g->_img, BLACK);
@@ -53,6 +53,7 @@ t_data_game	*initialize_game(void)
 	_game->player = ft_malloc(sizeof(t_player), ALLOC);
 	ft_bzero(_game->config->textures, sizeof(char *) * TEXTURE_COUNT);
 	_game->_img = ft_malloc(sizeof(t_imag), ALLOC);
+	_game->clos_win = false;
 	return (_game);
 }
 

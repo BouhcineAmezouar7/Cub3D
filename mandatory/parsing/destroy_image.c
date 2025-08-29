@@ -6,7 +6,7 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 16:43:23 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 20:07:14 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/29 16:16:29 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void	destroys_images(t_data_game *_g)
 		mlx_destroy_image(_g->_mlx, _g->texture->we_img->img);
 	if (_g->texture->ea_img->img)
 		mlx_destroy_image(_g->_mlx, _g->texture->ea_img->img);
-	if (_g->texture->sk_img->img)
-		mlx_destroy_image(_g->_mlx, _g->texture->sk_img->img);
 }
 
 bool	close_window(t_data_game *game)
