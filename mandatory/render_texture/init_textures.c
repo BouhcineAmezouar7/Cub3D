@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:18:42 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/29 18:26:36 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/30 11:25:22 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	init_textures(t_data_game *_game)
 	_game->texture->so_img = ft_malloc(sizeof(t_imag), ALLOC);
 	_game->texture->we_img = ft_malloc(sizeof(t_imag), ALLOC);
 	_game->texture->ea_img = ft_malloc(sizeof(t_imag), ALLOC);
-	_game->texture->sk_img = ft_malloc(sizeof(t_imag), ALLOC);
 }
 
 bool	init_textures_address(t_texture *texture)
