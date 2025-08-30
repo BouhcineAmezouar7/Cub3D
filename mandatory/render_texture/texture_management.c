@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_management.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 11:30:12 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 19:54:39 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/29 18:29:03 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,3 @@ unsigned int	blend_color(unsigned int src, unsigned int bg, double alpha)
 	result_rgb[2] = blend_channel(src_rgb[2], bg_rgb[2], alpha);
 	return ((result_rgb[0] << 16) | (result_rgb[1] << 8) | result_rgb[2]);
 }
-/*
-unsigned int	blend_color(unsigned int src, unsigned int bg, double alpha)
-{
-		int r1 = (src >> 16) & 0xFF;
-		int g1 = (src >> 8) & 0xFF;
-		int b1 = src & 0xFF;
-
-		int r2 = (bg >> 16) & 0xFF;
-		int g2 = (bg >> 8) & 0xFF;
-		int b2 = bg & 0xFF;
-
-		int r = (int)(r1 * alpha + r2 * (1 - alpha));
-		int g = (int)(g1 * alpha + g2 * (1 - alpha));
-		int b = (int)(b1 * alpha + b2 * (1 - alpha));
-
-		return ((r << 16) | (g << 8) | b);
-}*/
