@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player_hand_textures.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:00:17 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/29 16:12:45 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/30 12:08:43 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static void	load_frame_texture(t_data_game *_game, int i, char *filename)
 			filename, &width, &height);
 	if (!_game->player_hand->img[i]->img)
 	{
-		printf("Error: Even fallback texture failed to load\n");
-		syntax_error(ALLOC);
+		ft_putendl_fd("Error:\nEven fallback texture failed to load", STDERR);
+		close_window(_game);
 	}
 	_game->player_hand->img[i]->width = width;
 	_game->player_hand->img[i]->height = height;
