@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:20:54 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/30 10:09:59 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/30 11:25:50 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,8 +140,6 @@ typedef struct s_texture
 	char		*so;
 	char		*we;
 	char		*ea;
-	char		*sky;
-	t_imag		*sk_img;
 	t_imag		*no_img;
 	t_imag		*so_img;
 	t_imag		*we_img;
