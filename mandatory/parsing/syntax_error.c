@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 19:03:20 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/29 10:27:36 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/30 10:05:07 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	syntax_error(short option)
 		ft_putendl_fd("Error:\nmlx_init failed.", STDERR);
 	else if (option == 7)
 		ft_putendl_fd("Error:\nFailed to load textures.", STDERR);
-	else if (option == 8)
-		ft_putendl_fd("Error:\nAddress Failed to load textures.", STDERR);
 	else if (option == 9)
 		ft_putendl_fd("Error\nInvalid character", STDERR);
 	else if (option == 10)
