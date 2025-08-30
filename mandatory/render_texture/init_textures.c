@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:18:42 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/29 10:30:37 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/29 18:26:36 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,6 @@ bool	init_textures_address(t_texture *texture)
 	texture->so_img->addr = mlx_get_data_addr(texture->so_img->img,
 			&texture->so_img->bit_per_pixel, &texture->so_img->line_len,
 			&texture->so_img->endian);
-	if (!texture->no_img->addr || !texture->so_img->addr
-		|| !texture->we_img->addr || !texture->ea_img->addr)
-		return (syntax_error(8), ft_malloc(CLEAR, CLEAR), exit(EXIT_FAILURE),
-			false);
 	return (true);
 }
 
@@ -51,6 +47,7 @@ bool	init_textures_data(t_data_game *_game)
 {
 	t_texture	*texture;
 
+	init_textures(_game);
 	texture = _game->texture;
 	texture->no_img->img = mlx_xpm_file_to_image(_game->_mlx, texture->no,
 			&texture->no_img->width, &texture->no_img->height);
@@ -62,8 +59,8 @@ bool	init_textures_data(t_data_game *_game)
 			&texture->ea_img->width, &texture->ea_img->height);
 	if (!texture->no_img->img || !texture->so_img->img || !texture->we_img->img
 		|| !texture->ea_img->img)
-		return (syntax_error(7), ft_malloc(CLEAR, CLEAR), exit(EXIT_FAILURE),
-			false);
+		return (syntax_error(7), _game->clos_win = false,
+			close_window(_game), false);
 	init_textures_address(texture);
 	_game->texture = texture;
 	return (true);
