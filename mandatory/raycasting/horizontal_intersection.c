@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   horizontal_intersection.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 15:19:58 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 19:54:39 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/29 16:59:52 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
