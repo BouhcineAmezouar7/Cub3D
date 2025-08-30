@@ -6,7 +6,7 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 15:03:03 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 19:53:14 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/30 11:48:10 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ int	control_key_(int keycode, t_data_game *_g)
 
 	(1) && (old_player.y = _g->player->_y), (old_player.x = _g->player->_x);
 	if (keycode == ESCAPE)
-		return (close_window(_g),
-			exit(EXIT_SUCCESS), true);
+		return (_g->clos_win = true, close_window(_g), true);
 	_player_move(keycode, _g);
 	wall_collisions(_g, old_player);
 	if (keycode == LEFT_ARROW)
