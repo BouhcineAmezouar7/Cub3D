@@ -6,7 +6,7 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:53:53 by bamezoua          #+#    #+#             */
-/*   Updated: 2025/08/28 20:02:31 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/30 09:56:37 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static bool	check_adjacent_cells(t_data_game *_game, int i, int j, int width)
 	bool	invalid;
 
 	invalid = false;
-	if (i > 0 && (j >= ft_count(_game->map[i - 1]) || _game->map[i
-			- 1][j] == ' '))
+	if (i > 0 && (j >= ft_count(_game->map[i - 1])
+			|| _game->map[i - 1][j] == ' '))
 		invalid = true;
 	if (i < _game->map_height - 1 && (j >= ft_count(_game->map[i + 1])
 			|| _game->map[i + 1][j] == ' '))
