@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_image.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 16:43:23 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 19:53:14 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/30 12:01:37 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	destroy_player_hand(t_data_game *_g)
 	i = 0;
 	while (i < _g->player_hand->num_frames)
 	{
-		if (_g->player_hand->img[i])
+		if (_g->player_hand->img[i] && _g->player_hand->img[i]->img)
 			mlx_destroy_image(_g->_mlx, _g->player_hand->img[i]->img);
 		i++;
 	}
@@ -38,19 +38,19 @@ void	_exit_with_error(void)
 
 void	destroys_images(t_data_game *_g)
 {
-	if (_g->_img->img)
+	if (_g->_img && _g->_img->img)
 		mlx_destroy_image(_g->_mlx, _g->_img->img);
-	if (_g->texture->no_img->img)
+	if (_g->texture->no_img && _g->texture->no_img->img)
 		mlx_destroy_image(_g->_mlx, _g->texture->no_img->img);
-	if (_g->texture->so_img->img)
+	if (_g->texture->so_img && _g->texture->so_img->img)
 		mlx_destroy_image(_g->_mlx, _g->texture->so_img->img);
-	if (_g->texture->we_img->img)
+	if (_g->texture->we_img && _g->texture->we_img->img)
 		mlx_destroy_image(_g->_mlx, _g->texture->we_img->img);
-	if (_g->texture->ea_img->img)
+	if (_g->texture->ea_img && _g->texture->ea_img->img)
 		mlx_destroy_image(_g->_mlx, _g->texture->ea_img->img);
-	if (_g->texture->sk_img->img)
+	if (_g->texture->sk_img && _g->texture->sk_img->img)
 		mlx_destroy_image(_g->_mlx, _g->texture->sk_img->img);
-	if (_g->texture->dr_img->img)
+	if (_g->texture->dr_img && _g->texture->dr_img->img)
 		mlx_destroy_image(_g->_mlx, _g->texture->dr_img->img);
 }
 
