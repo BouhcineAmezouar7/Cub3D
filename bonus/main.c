@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 16:57:49 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/29 16:13:25 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/30 12:09:42 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ struct s_game	*data_struc(void)
 int	render(t_data_game *g)
 {
 	static short	frame;
-	
+
 	if (frame == 100)
 	{
 		clear_image(g->_img, BLACK);
@@ -57,18 +57,20 @@ t_data_game	*initialize_game(void)
 	return (_game);
 }
 
-void	start_simulation(t_data_game *_game)
+bool	start_simulation(t_data_game *_game)
 {
-	init_textures(_game);
+	_game->clos_win = false;
+	if (!_mlx_init_data(_game))
+		return (_game->clos_win = false, close_window(_game), false);
 	init_player_hand_textures(_game);
 	player_init(_game);
 	init_textures_data(_game);
 	_game->minimap = ft_malloc(sizeof(t_minimap), ALLOC);
-	_mlx_init_data(_game);
 	mlx_hook(_game->_win_mlx, KeyPress, KeyPressMask, control_key_, _game);
 	mlx_mouse_hook(_game->_win_mlx, control_gun_key, _game);
 	mlx_loop_hook(_game->_mlx, render, _game);
 	mlx_loop(_game->_mlx);
+	return (true);
 }
 
 int	main(int ac, char **av)
