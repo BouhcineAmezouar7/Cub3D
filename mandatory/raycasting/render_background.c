@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_background.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:20:57 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/29 10:34:59 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/30 09:57:36 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	draw_sky_and_floor(t_data_game *_game)
 {
-	int		y;
-	int		x;
-
-	(1) && (y = 0);
+	short (y), (x);
+	y = 0;
 	while (y < WINDOW_HEIGHT / 2)
 	{
 		x = 0;
@@ -33,31 +31,3 @@ void	draw_sky_and_floor(t_data_game *_game)
 		y++;
 	}
 }
-/*
-void draw_sky_and_floor(t_data_game *_game)
-{
-	short (y), (x);
-
-	y = 0;
-	while (y < WINDOW_HEIGHT / 2)
-	{
-		x = 0;
-		while (x < WINDOW_WIDTH)
-		{
-			my_mlx_pixel_put(_game->_img, x, y, _game->config->ceiling_color);
-			x++;
-		}
-		y++;
-	}
-	while (y < WINDOW_HEIGHT)
-	{
-		x = 0;
-		while (x < WINDOW_WIDTH)
-		{
-			my_mlx_pixel_put(_game->_img, x, y, _game->config->floor_color);
-			x++;
-		}
-		y++;
-	}
-}
-*/
