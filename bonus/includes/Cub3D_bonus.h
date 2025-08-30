@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:20:54 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 20:46:46 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/30 11:29:51 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@
 # define TILE_SIZE 64
 # define PI 3.141592653589793
 # define FOV 1.0471975511965976
-// 60 * (PI / 180) // <- convert in radin (degree * 180/PI)
+
 # define MOVE_SPEED 5
 # define ROTATION_SPEED 0.2618
 # define NUM_RAYS 200
-// color
+
 # define WHITE 0xFFFFFF
 # define BLACK 0x000000
 # define RED 0xFF0000
@@ -139,7 +139,7 @@ typedef struct s_ray
 	t_point		step_v;
 	t_point		hit;
 	t_point		v_inters;
-	t_point		h_inters; // this forst point this
+	t_point		h_inters;
 }			t_ray;
 
 typedef struct s_texture
@@ -249,9 +249,8 @@ char			**parse_map(t_data_game *_game);
 bool			parsing(char *filename, t_data_game *_game);
 
 /* -------------------------------------------------------------------------- */
-/*                             parse_maps.c                                   */
+/*                             list_read.c                                    */
 /* -------------------------------------------------------------------------- */
-// file_reading.c
 t_list			*listnew(void *content);
 t_list			*file_reading(short fd);
 t_texture_type	get_texturs_type(char *line);
@@ -367,7 +366,7 @@ void			check_spaces(t_config *_config);
 /*                             _mlx_init  			              */
 /* -------------------------------------------------------------------------- */
 bool			_mlx_init_data(t_data_game *_game);
-void			start_simulation(t_data_game *_game);
+bool			start_simulation(t_data_game *_game);
 
 /* -------------------------------------------------------------------------- */
 /*                             validate_textures.c                            */
