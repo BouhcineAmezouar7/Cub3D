@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:20:54 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/30 11:29:51 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/31 11:37:06 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define FOV 1.0471975511965976
 
 # define MOVE_SPEED 5
-# define ROTATION_SPEED 0.2618
+# define ROTATION_SPEED 0.02618
 # define NUM_RAYS 200
 
 # define WHITE 0xFFFFFF
@@ -46,15 +46,10 @@
 # define GRAY 0x808080
 # define DARK_GRAY 0x404040
 
-// Add these defines after your existing ones
 # define MINIMAP_RADIUS 70
 # define MINIMAP_CENTER_X 1160
-# define MINIMAP_CENTER_Y (WINDOW_HEIGHT - 90)
+# define MINIMAP_CENTER_Y 646
 # define MINIMAP_ZOOM 3.0
-
-# define NONE 0
-# define HORIZONTAL 1
-# define VERTICAL 2
 
 typedef enum s_texture_type
 {
@@ -158,7 +153,6 @@ typedef struct s_texture
 	t_imag		*ea_img;
 }			t_texture;
 
-// animation player hand
 typedef struct s_player_hand
 {
 	t_imag		**img;
@@ -320,6 +314,11 @@ int				control_key_(int keycode, t_data_game *_game);
 void			_player_move(int key, t_data_game *_game);
 
 /* -------------------------------------------------------------------------- */
+/*                          mouse_control.c 		    		      */
+/* -------------------------------------------------------------------------- */
+int				mouse_move(int x, int y, t_data_game *_g);
+
+/* -------------------------------------------------------------------------- */
 /*                          manage_door.c 		    		      */
 /* -------------------------------------------------------------------------- */
 bool			is_door(t_data_game *_game, double px, double py);
@@ -363,11 +362,22 @@ bool			validate_colors(t_config *_config, t_data_game *_game);
 void			check_spaces(t_config *_config);
 
 /* -------------------------------------------------------------------------- */
+/*                             display_start_image.c                          */
+/* -------------------------------------------------------------------------- */
+bool			display_start_image(t_data_game *_g);
+t_imag			init_start_imag(t_data_game *_game);
+
+/* -------------------------------------------------------------------------- */
 /*                             _mlx_init  			              */
 /* -------------------------------------------------------------------------- */
 bool			_mlx_init_data(t_data_game *_game);
-bool			start_simulation(t_data_game *_game);
+t_data_game		*initialize_game(void);
 
+/* -------------------------------------------------------------------------- */
+/*                             start_simulation.c  			      */
+/* -------------------------------------------------------------------------- */
+bool			start_simulation(t_data_game *_game);
+int				render(t_data_game *g);
 /* -------------------------------------------------------------------------- */
 /*                             validate_textures.c                            */
 /* -------------------------------------------------------------------------- */
