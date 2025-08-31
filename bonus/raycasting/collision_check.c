@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collision_check.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:17:10 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 19:53:14 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/31 10:52:37 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 bool	_hase_wall(t_data_game *_game, double dx, double dy)
 {
 	return (is_wall(_game, dx, dy)
-		|| is_wall(_game, dx + 1, dy + 1)
-		|| is_wall(_game, dx - 1, dy + 1)
-		|| is_wall(_game, dx + 1, dy - 1)
-		|| is_wall(_game, dx - 1, dy - 1));
+		|| is_wall(_game, dx + 3, dy + 3)
+		|| is_wall(_game, dx - 3, dy + 3)
+		|| is_wall(_game, dx + 3, dy - 3)
+		|| is_wall(_game, dx - 3, dy - 3));
 }
 
 bool	is_wall(t_data_game *_game, double x, double y)
