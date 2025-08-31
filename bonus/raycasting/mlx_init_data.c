@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init_data.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:22:09 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 19:53:14 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/31 11:46:14 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Cub3D_bonus.h"
+
+t_data_game	*initialize_game(void)
+{
+	t_data_game	*_game;
+
+	_game = ft_malloc(sizeof(t_data_game), ALLOC);
+	_game->config = ft_malloc(sizeof(t_config), ALLOC);
+	_game->texture = ft_malloc(sizeof(t_texture), ALLOC);
+	_game->player = ft_malloc(sizeof(t_player), ALLOC);
+	ft_bzero(_game->config->textures, sizeof(char *) * TEXTURE_COUNT);
+	_game->_img = ft_malloc(sizeof(t_imag), ALLOC);
+	_game->clos_win = false;
+	return (_game);
+}
 
 bool	_mlx_init_data(t_data_game *_g)
 {
