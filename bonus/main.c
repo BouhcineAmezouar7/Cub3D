@@ -19,7 +19,6 @@ struct s_game	*data_struc(void)
 	return (&data_struc);
 }
 
-
 int	main(int ac, char **av)
 {
 	t_data_game	*_game;
