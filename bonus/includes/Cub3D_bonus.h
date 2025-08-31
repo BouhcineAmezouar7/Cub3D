@@ -6,7 +6,7 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:20:54 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/31 14:47:49 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/31 19:39:31 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,6 @@ typedef struct s_player_hand
 	int			num_frames;
 	int			current_frame;
 	bool		is_shooting;
-	int			frame_allocation;
 }			t_player_hand;
 
 typedef struct s_wall_slice
