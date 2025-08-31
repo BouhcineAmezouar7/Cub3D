@@ -17,6 +17,8 @@ void	destroy_player_hand(t_data_game *_g)
 	short	i;
 
 	i = 0;
+	if (!_g->player_hand)
+		return ;
 	while (i < _g->player_hand->num_frames)
 	{
 		if (_g->player_hand->img[i] && _g->player_hand->img[i]->img)
@@ -40,6 +42,8 @@ void	destroys_images(t_data_game *_g)
 {
 	if (_g->_img && _g->_img->img)
 		mlx_destroy_image(_g->_mlx, _g->_img->img);
+	if (!_g->texture)
+		return ;
 	if (_g->texture->no_img && _g->texture->no_img->img)
 		mlx_destroy_image(_g->_mlx, _g->texture->no_img->img);
 	if (_g->texture->so_img && _g->texture->so_img->img)
