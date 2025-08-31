@@ -76,10 +76,12 @@ SRC_BONUS = $(SRC_DIR_BONUS)/main.c \
       $(MANAGE_PLAYER_DIR_BONUS)/player_init.c \
       $(MANAGE_PLAYER_DIR_BONUS)/player_control.c \
       $(MANAGE_PLAYER_DIR_BONUS)/manage_door.c \
+      $(MANAGE_PLAYER_DIR_BONUS)/mouse_control.c \
       $(DRAW_MAPS_DIR_BONUS)/mlx_utils.c \
       $(DRAW_MAPS_DIR_BONUS)/direction_line.c \
       $(DRAW_MAPS_DIR_BONUS)/minimap.c \
       $(DRAW_MAPS_DIR_BONUS)/minimap_utils.c \
+      $(RAYCASTING_DIR_BONUS)/start_simulation.c \
       $(RAYCASTING_DIR_BONUS)/mlx_init_data.c \
       $(RAYCASTING_DIR_BONUS)/angle_direction.c \
       $(RAYCASTING_DIR_BONUS)/collision_check.c \
@@ -91,7 +93,8 @@ SRC_BONUS = $(SRC_DIR_BONUS)/main.c \
       $(RENDER_TEXTURE_DIR_BONUS)/player_hand_animation.c \
       $(RENDER_TEXTURE_DIR_BONUS)/init_player_hand_textures.c \
       $(RENDER_TEXTURE_DIR_BONUS)/init_textures.c \
-      $(RENDER_TEXTURE_DIR_BONUS)/texture_management.c
+      $(RENDER_TEXTURE_DIR_BONUS)/texture_management.c \
+      $(RENDER_TEXTURE_DIR_BONUS)/display_start_image.c
 
 SRC_MANDATORY += $(SRC_GETLINE)
 SRC_BONUS += $(SRC_GETLINE)
