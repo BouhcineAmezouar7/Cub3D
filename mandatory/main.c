@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 16:57:49 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/30 09:55:32 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/31 14:31:38 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ t_data_game	*initialize_game(void)
 
 bool	start_simulation(t_data_game *_game)
 {
-	_game->clos_win = false;
+	_game->close_win = false;
 	if (!_mlx_init_data(_game))
-		return (_game->clos_win = false, close_window(_game), false);
+		return (_game->close_win = false, close_window(_game), false);
 	init_textures_data(_game);
 	player_init(_game);
 	mlx_hook(_game->_win_mlx, KeyPress, KeyPressMask, control_key_, _game);

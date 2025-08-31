@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_simulation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 11:23:09 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/31 11:24:26 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/31 14:48:10 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	render(t_data_game *g)
 
 bool	start_simulation(t_data_game *_game)
 {
-	_game->clos_win = false;
+	_game->close_win = false;
 	if (!_mlx_init_data(_game))
-		return (_game->clos_win = false, close_window(_game), false);
+		return (_game->close_win = false, close_window(_game), false);
 	init_textures_data(_game);
 	init_player_hand_textures(_game);
 	player_init(_game);

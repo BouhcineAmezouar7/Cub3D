@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:18:42 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/30 11:25:22 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/31 14:31:38 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ bool	init_textures_data(t_data_game *_game)
 			&texture->ea_img->width, &texture->ea_img->height);
 	if (!texture->no_img->img || !texture->so_img->img || !texture->we_img->img
 		|| !texture->ea_img->img)
-		return (syntax_error(7), _game->clos_win = false,
+		return (syntax_error(7), _game->close_win = false,
 			close_window(_game), false);
 	init_textures_address(texture);
 	_game->texture = texture;

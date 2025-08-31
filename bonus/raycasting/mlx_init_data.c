@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init_data.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:22:09 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/31 11:46:14 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/31 14:31:38 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_data_game	*initialize_game(void)
 	_game->player = ft_malloc(sizeof(t_player), ALLOC);
 	ft_bzero(_game->config->textures, sizeof(char *) * TEXTURE_COUNT);
 	_game->_img = ft_malloc(sizeof(t_imag), ALLOC);
-	_game->clos_win = false;
+	_game->close_win = false;
 	return (_game);
 }
 

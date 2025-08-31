@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_image.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 16:43:23 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/30 11:50:59 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/31 14:31:38 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ bool	close_window(t_data_game *game)
 		free(game->_mlx);
 		game->_mlx = NULL;
 	}
-	if (game->clos_win)
+	if (game->close_win)
 		return (ft_malloc(CLEAR, CLEAR), exit(EXIT_SUCCESS), true);
 	else
 		return (ft_malloc(CLEAR, CLEAR), exit(EXIT_FAILURE), false);

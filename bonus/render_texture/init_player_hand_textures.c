@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player_hand_textures.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:00:17 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/30 12:08:43 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/31 14:49:52 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static void	init_player_hand_memory(t_data_game *_game)
 	_game->player_hand->num_frames = 4;
 	_game->player_hand->current_frame = 0;
 	_game->player_hand->is_shooting = false;
+	_game->player_hand->frame_allocation = 0;
 	_game->player_hand->img = ft_malloc(sizeof(t_imag *)
 			* _game->player_hand->num_frames, ALLOC);
 }
@@ -69,6 +70,7 @@ void	init_player_hand_textures(t_data_game *_game)
 	while (i < _game->player_hand->num_frames)
 	{
 		_game->player_hand->img[i] = ft_malloc(sizeof(t_imag), ALLOC);
+		_game->player_hand->frame_allocation = i + 1;
 		build_filename(filename, "./textures/shotgun/anim_", i, ".xpm");
 		load_frame_texture(_game, i, filename);
 		i++;

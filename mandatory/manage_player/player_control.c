@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_control.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 15:03:03 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/30 12:20:50 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/31 14:31:38 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	control_key_(int keycode, t_data_game *_g)
 
 	(1) && (old_player.y = _g->player->_y), (old_player.x = _g->player->_x);
 	if (keycode == ESCAPE)
-		return (_g->clos_win = true, close_window(_g), true);
+		return (_g->close_win = true, close_window(_g), true);
 	_player_move(keycode, _g);
 	wall_collisions(_g, old_player);
 	if (keycode == LEFT_ARROW)

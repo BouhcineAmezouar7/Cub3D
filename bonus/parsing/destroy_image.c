@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_image.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 16:43:23 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/31 11:57:30 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/08/31 14:49:11 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 
 void	destroy_player_hand(t_data_game *_g)
 {
-	short	i;
+    short	i;
 
-	i = 0;
-	if (!_g->player_hand)
-		return ;
-	while (i < _g->player_hand->num_frames)
-	{
-		if (_g->player_hand->img[i] && _g->player_hand->img[i]->img)
-			mlx_destroy_image(_g->_mlx, _g->player_hand->img[i]->img);
-		i++;
-	}
+    i = 0;
+    if (!_g->player_hand)
+        return ;
+    if (_g->player_hand->num_frames <= 0 || _g->player_hand->num_frames > 100)
+        return ;
+    while (i < _g->player_hand->num_frames && i < _g->player_hand->frame_allocation)
+    {
+        if (_g->player_hand->img[i] && _g->player_hand->img[i]->img)
+            mlx_destroy_image(_g->_mlx, _g->player_hand->img[i]->img);
+        i++;
+    }
 }
 
 void	_exit_with_error(void)
@@ -73,7 +75,7 @@ bool	close_window(t_data_game *game)
 		free(game->_mlx);
 		game->_mlx = NULL;
 	}
-	if (game->clos_win)
+	if (game->close_win)
 		return (ft_malloc(CLEAR, CLEAR), exit(EXIT_SUCCESS), true);
 	else
 		return (ft_malloc(CLEAR, CLEAR), exit(EXIT_FAILURE), false);
