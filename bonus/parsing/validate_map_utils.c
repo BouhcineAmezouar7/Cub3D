@@ -6,7 +6,7 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:07:00 by bamezoua          #+#    #+#             */
-/*   Updated: 2025/08/28 19:53:14 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/31 14:13:35 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ bool	check_right_and_left(t_data_game *_game)
 	{
 		j = 0;
 		if (_game->map[i][j] == 'N' || _game->map[i][j] == 'S'
-			|| _game->map[i][j] == 'E' || _game->map[i][j] == 'W'
-			|| _game->map[i][ft_strlen(_game->map[i]) - 1] == 'N')
+			|| _game->map[i][j] == 'E' || _game->map[i][j] == 'W')
 		{
 			printf("Invalid map: left or right column must be all walls\n");
 			return (false);
