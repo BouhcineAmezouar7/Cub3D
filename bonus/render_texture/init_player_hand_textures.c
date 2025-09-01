@@ -6,7 +6,7 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:00:17 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/31 19:39:29 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/09/01 09:49:22 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ static void	load_frame_texture(t_data_game *_game, int i, char *filename)
 
 static void	init_player_hand_memory(t_data_game *_game)
 {
-	// _game->player_hand = ft_malloc(sizeof(t_player_hand), ALLOC);
-	// // ft_memset(&_game->player_hand, 0, sizeof(t_player_hand));
 	_game->player_hand->num_frames = 4;
 	_game->player_hand->current_frame = 0;
 	_game->player_hand->is_shooting = false;
