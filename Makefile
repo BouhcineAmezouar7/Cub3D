@@ -52,6 +52,7 @@ SRC_MANDATORY = $(SRC_DIR_MANDATORY)/main.c \
       $(MANAGE_PLAYER_DIR_MANDATORY)/player_control.c \
       $(DRAW_MAPS_DIR_MANDATORY)/mlx_utils.c \
       $(RAYCASTING_DIR_MANDATORY)/mlx_init_data.c \
+      $(RAYCASTING_DIR_MANDATORY)/start_simulation.c\
       $(RAYCASTING_DIR_MANDATORY)/angle_direction.c \
       $(RAYCASTING_DIR_MANDATORY)/collision_check.c \
       $(RAYCASTING_DIR_MANDATORY)/vertical_intersection.c \
