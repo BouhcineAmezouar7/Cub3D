@@ -79,7 +79,6 @@ SRC_BONUS = $(SRC_DIR_BONUS)/main.c \
       $(MANAGE_PLAYER_DIR_BONUS)/manage_door.c \
       $(MANAGE_PLAYER_DIR_BONUS)/mouse_control.c \
       $(DRAW_MAPS_DIR_BONUS)/mlx_utils.c \
-      $(DRAW_MAPS_DIR_BONUS)/direction_line.c \
       $(DRAW_MAPS_DIR_BONUS)/minimap.c \
       $(DRAW_MAPS_DIR_BONUS)/minimap_utils.c \
       $(RAYCASTING_DIR_BONUS)/start_simulation.c \

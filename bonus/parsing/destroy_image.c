@@ -6,7 +6,7 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 16:43:23 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/31 14:49:11 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/31 19:39:24 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	destroy_player_hand(t_data_game *_g)
         return ;
     if (_g->player_hand->num_frames <= 0 || _g->player_hand->num_frames > 100)
         return ;
-    while (i < _g->player_hand->num_frames && i < _g->player_hand->frame_allocation)
+    while (i < _g->player_hand->num_frames)
     {
         if (_g->player_hand->img[i] && _g->player_hand->img[i]->img)
             mlx_destroy_image(_g->_mlx, _g->player_hand->img[i]->img);

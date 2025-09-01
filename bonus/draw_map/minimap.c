@@ -6,7 +6,7 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 12:00:00 by bamezoua          #+#    #+#             */
-/*   Updated: 2025/08/29 11:34:13 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:24:17 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,10 @@ static void	draw_player_circle(t_data_game *_game)
 	}
 }
 
-void	draw_minimap_player(t_data_game *_game)
-{
-	draw_player_circle(_game);
-	draw_direction_line(_game);
-}
-
 void	draw_minimap(t_data_game *_game)
 {
 	draw_minimap_background(_game);
 	draw_minimap_walls(_game);
-	draw_minimap_player(_game);
+	draw_player_circle(_game);
 	draw_minimap_border(_game);
 }
