@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 16:57:49 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/31 14:31:38 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/09/01 08:34:42 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,49 +17,6 @@ struct s_game	*data_struc(void)
 	static struct s_game	data_struc = {0};
 
 	return (&data_struc);
-}
-
-int	render(t_data_game *g)
-{
-	static short	frame;
-
-	if (frame == 100)
-	{
-		clear_image(g->_img, BLACK);
-		draw_sky_and_floor(g);
-		_cast_all_rays(g);
-		mlx_put_image_to_window(g->_mlx, g->_win_mlx, g->_img->img, 0, 0);
-		frame = 0;
-	}
-	frame++;
-	return (0);
-}
-
-t_data_game	*initialize_game(void)
-{
-	t_data_game	*_game;
-
-	_game = ft_malloc(sizeof(t_data_game), ALLOC);
-	_game->config = ft_malloc(sizeof(t_config), ALLOC);
-	_game->texture = ft_malloc(sizeof(t_texture), ALLOC);
-	_game->player = ft_malloc(sizeof(t_player), ALLOC);
-	ft_memset(_game->config->textures, 0, sizeof(char *) * TEXTURE_COUNT);
-	_game->_img = ft_malloc(sizeof(t_imag), ALLOC);
-	ft_memset(_game->texture, 0, sizeof(t_texture));
-	return (_game);
-}
-
-bool	start_simulation(t_data_game *_game)
-{
-	_game->close_win = false;
-	if (!_mlx_init_data(_game))
-		return (_game->close_win = false, close_window(_game), false);
-	init_textures_data(_game);
-	player_init(_game);
-	mlx_hook(_game->_win_mlx, KeyPress, KeyPressMask, control_key_, _game);
-	mlx_loop_hook(_game->_mlx, render, _game);
-	mlx_loop(_game->_mlx);
-	return (true);
 }
 
 int	main(int ac, char **av)
