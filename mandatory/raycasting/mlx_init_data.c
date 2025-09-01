@@ -6,11 +6,25 @@
 /*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:22:09 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/29 18:51:26 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/09/01 08:32:06 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Cub3D.h"
+
+t_data_game	*initialize_game(void)
+{
+	t_data_game	*_game;
+
+	_game = ft_malloc(sizeof(t_data_game), ALLOC);
+	_game->config = ft_malloc(sizeof(t_config), ALLOC);
+	_game->texture = ft_malloc(sizeof(t_texture), ALLOC);
+	_game->player = ft_malloc(sizeof(t_player), ALLOC);
+	ft_memset(_game->config->textures, 0, sizeof(char *) * TEXTURE_COUNT);
+	_game->_img = ft_malloc(sizeof(t_imag), ALLOC);
+	ft_memset(_game->texture, 0, sizeof(t_texture));
+	return (_game);
+}
 
 bool	_mlx_init_data(t_data_game *_g)
 {
