@@ -6,7 +6,7 @@
 /*   By: bamezoua <bamezoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 18:52:19 by ybounite          #+#    #+#             */
-/*   Updated: 2025/08/28 19:53:14 by bamezoua         ###   ########.fr       */
+/*   Updated: 2025/09/02 12:07:34 by bamezoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,16 @@ void	trigger_shooting_animation(t_data_game *_game)
 	_game->player_hand->is_shooting = true;
 }
 
+unsigned int	ft_pixel_color(char *src_data, int x, int y,
+		t_imag *current_frame)
+{
+	unsigned int	pixel_color;
+
+	pixel_color = *(unsigned int *)(src_data + (y * current_frame->line_length
+				+ x * (current_frame->bpp / 8)));
+	return (pixel_color);
+}
+
 static void	draw_hand_pixel(t_data_game *_game, int x_pos, int y_pos,
 		t_imag *current_frame)
 {
@@ -49,9 +59,7 @@ static void	draw_hand_pixel(t_data_game *_game, int x_pos, int y_pos,
 		x = 0;
 		while (x < current_frame->width)
 		{
-			pixel_color = *(unsigned int *)(src_data + (y
-						* current_frame->line_length + x * (current_frame->bpp
-							/ 8)));
+			pixel_color = ft_pixel_color(src_data, x, y, current_frame);
 			if (pixel_color != 0x000000 && pixel_color != 0xFF000000)
 			{
 				if (x_pos + x >= 0 && y_pos + y >= 0 && x_pos
